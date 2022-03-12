@@ -3,7 +3,7 @@ import styles from './Account.module.css';
 import {Dispatch, SetStateAction, useMemo, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEnvelope, faUser, faMoneyBill1, faBell} from '@fortawesome/free-regular-svg-icons';
-import {faArrowRightFromBracket} from '@fortawesome/free-solid-svg-icons';
+import {faArrowRightFromBracket, faChevronDown} from '@fortawesome/free-solid-svg-icons';
 
 const Account: Function = (): JSX.Element => {
 	const [websiteURL]: [string, Dispatch<SetStateAction<string>>] = useState('https://apple.com/');
@@ -24,9 +24,7 @@ const Account: Function = (): JSX.Element => {
 			<i/>
 			{AccountWebsite}
 			<button className={styles.Account__button}>
-				<svg width="11" height="8" viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M0.888108 2.01807L0.798984 2.11789L0.888029 2.21778L5.38109 7.25815L5.49289 7.38357L5.60488 7.25832L10.1118 2.21795L10.2012 2.11805L10.1119 2.01807L9.50523 1.33859L9.39326 1.21317L9.28138 1.33867L5.50182 5.57819L1.71892 1.33825L1.60704 1.21284L1.4951 1.33821L0.888108 2.01807Z" fill="#424E5D" stroke="#424E5D" strokeWidth="0.3"/>
-				</svg>
+				<FontAwesomeIcon icon={faChevronDown}/>
 			</button>
 			<div className={styles.Account__dropdown}>
 				{AccountWebsite}
