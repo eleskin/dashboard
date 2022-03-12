@@ -1,0 +1,75 @@
+.Logo {
+	padding: 16px 0 16px 32px;
+	border-bottom: 1px solid #f2f2f2;
+}
+
+.Logo__container {
+	display: inline-grid;
+	grid-template-columns: auto 1fr;
+	grid-column-gap: 4px;
+	align-items: center;
+	text-decoration: none;
+}
+
+.Logo__icon {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
+}
+
+.Logo__icon::before, .Logo__icon::after {
+	content: '';
+	display: block;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	position: relative;
+	transition: var(--main-transition);
+}
+
+.Logo__icon::before {
+	background-color: #1c80f3;
+}
+
+.Logo__icon::after {
+	background-color: #c0d7f8;
+	left: -8px;
+}
+
+.Logo__container:hover .Logo__icon::before {
+	transform: translateX(5px);
+}
+
+.Logo__container:hover .Logo__icon::after {
+	transform: translateX(-5px);
+}
+
+.Logo__label {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
+	letter-spacing: 0.17em;
+	color: #000000;
+	transition: var(--main-transition);
+}
+
+.Logo__label::after {
+	content: '';
+	display: block;
+	width: 0;
+	height: calc(3px / 2);
+	min-height: 1px;
+	background-color: #1c80f3;
+	position: relative;
+	bottom: -2px;
+	margin-bottom: -2px;
+	transition: var(--main-transition);
+}
+
+.Logo__container:hover .Logo__label {
+	color: #1c80f3;
+}
+
+.Logo__container:hover .Logo__label::after {
+	width: 100%;
+}
