@@ -85,7 +85,7 @@
 .Account:hover .Account__dropdown {
 	opacity: 1;
 	transform: translateY(0);
-	z-index: 0;
+	z-index: 2;
 	transition: opacity 0.2s linear, transform 0.2s linear, z-index 0s linear 0s;
 }
 
