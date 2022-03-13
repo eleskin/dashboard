@@ -1,12 +1,11 @@
 .Logo {
-	padding: 16px 0 16px 32px;
+	padding: 16px 32px 16px 32px;
 	border-bottom: 1px solid #f2f2f2;
 }
 
 .Logo__container {
 	display: inline-grid;
 	grid-template-columns: auto 1fr;
-	grid-column-gap: 4px;
 	align-items: center;
 	text-decoration: none;
 }
@@ -47,10 +46,21 @@
 .Logo__label {
 	font-weight: 400;
 	font-size: 14px;
-	line-height: 16px;
 	letter-spacing: 0.17em;
 	color: #000000;
-	transition: var(--main-transition);
+	transition: var(--longer-transition);
+	white-space: nowrap;
+	padding-left: 0;
+	opacity: 0;
+	z-index: -1;
+	width: 0;
+}
+
+.Logo_hover .Logo__label {
+	padding-left: 4px;
+	opacity: 1;
+	z-index: 0;
+	width: 100%;
 }
 
 .Logo__label::after {

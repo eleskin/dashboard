@@ -2,6 +2,7 @@
 
 :root {
 	--main-transition: all 0.1s linear;
+	--longer-transition: all 0.2s linear;
 }
 
 

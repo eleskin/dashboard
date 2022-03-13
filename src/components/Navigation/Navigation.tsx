@@ -11,38 +11,38 @@ import navigation_image_5 from '../../assets/images/navigation/navigation-icon-5
 import navigation_image_6 from '../../assets/images/navigation/navigation-icon-6.svg';
 import navigation_image_7 from '../../assets/images/navigation/navigation-icon-7.svg';
 
-const Navigation: Function = (): JSX.Element => {
+const Navigation: Function = ({isHovering}: {isHovering: boolean}): JSX.Element => {
 	return (
-		<div className={styles.Navigation}>
+		<div className={`${styles.Navigation} ${isHovering && styles.Navigation_hover}`}>
 			<span className={styles.Navigation__label}>SERVICES</span>
 			<ul className={styles.Navigation__list}>
 				<li>
 					<a href="/">
-						<span><img src={navigation_image_1} alt=""/> Dashboard</span>
+						<span><img src={navigation_image_1} alt=""/> <i>Dashboard</i></span>
 						<i><FontAwesomeIcon icon={faChevronRight}/></i>
 					</a>
 				</li>
 				<li>
 					<a href="/">
-						<span><img src={navigation_image_2} alt=""/> Google Ad</span>
+						<span><img src={navigation_image_2} alt=""/> <i>Google Ad</i></span>
 						<i><FontAwesomeIcon icon={faChevronRight}/></i>
 					</a>
 				</li>
 				<li>
 					<a href="/">
-						<span><img src={navigation_image_3} alt=""/> SEO rank</span>
+						<span><img src={navigation_image_3} alt=""/> <i>SEO rank</i></span>
 						<i><FontAwesomeIcon icon={faChevronRight}/></i>
 					</a>
 				</li>
 				<li>
 					<a href="/">
-						<span><img src={navigation_image_4} alt=""/> SEO reports</span>
+						<span><img src={navigation_image_4} alt=""/> <i>SEO reports</i></span>
 						<i><FontAwesomeIcon icon={faChevronRight}/></i>
 					</a>
 				</li>
 				<li>
 					<a href="/">
-						<span><img src={navigation_image_5} alt=""/> SMM center</span>
+						<span><img src={navigation_image_5} alt=""/> <i>SMM center</i></span>
 						<i><FontAwesomeIcon icon={faChevronRight}/></i>
 					</a>
 				</li>
@@ -51,13 +51,13 @@ const Navigation: Function = (): JSX.Element => {
 			<ul className={styles.Navigation__list}>
 				<li>
 					<a href="/">
-						<span><img src={navigation_image_6} alt=""/> Payments</span>
+						<span><img src={navigation_image_6} alt=""/> <i>Payments</i></span>
 						<i><FontAwesomeIcon icon={faChevronRight}/></i>
 					</a>
 				</li>
 				<li>
 					<a href="/">
-						<span><img src={navigation_image_7} alt=""/> Help center</span>
+						<span><img src={navigation_image_7} alt=""/> <i>Help center</i></span>
 						<i><FontAwesomeIcon icon={faChevronRight}/></i>
 					</a>
 				</li>

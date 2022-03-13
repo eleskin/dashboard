@@ -42,6 +42,18 @@
 	font-size: 14px;
 	letter-spacing: 0.05em;
 	color: #3f4b5b;
+	white-space: nowrap;
+	text-align: center;
+	transition: var(--longer-transition);
+	opacity: 0;
+	z-index: -1;
+}
+
+.Account_hover .Account__url {
+	width: auto;
+	height: auto;
+	opacity: 1;
+	z-index: 0;
 }
 
 .Account__role {
@@ -50,6 +62,18 @@
 	letter-spacing: 0.18em;
 	color: #999999;
 	margin-top: 4px;
+	white-space: nowrap;
+	text-align: center;
+	transition: var(--longer-transition);
+	opacity: 0;
+	z-index: -1;
+}
+
+.Account_hover .Account__role {
+	width: auto;
+	height: auto;
+	opacity: 1;
+	z-index: 0;
 }
 
 .Account__button {
@@ -59,6 +83,14 @@
 	cursor: pointer;
 	height: 24px;
 	width: 24px;
+	opacity: 0;
+	z-index: -1;
+	transition: var(--longer-transition);
+}
+
+.Account_hover .Account__button {
+	opacity: 1;
+	z-index: 0;
 }
 
 .Account__dropdown {
@@ -78,16 +110,27 @@
 	z-index: -1;
 }
 
-.Account:hover .Account__website {
+.Account_active .Account__website {
 	border-bottom-color: #e0e0e0;
 }
 
-.Account:hover .Account__dropdown {
+.Account_active .Account__dropdown {
 	opacity: 1;
 	transform: translateY(0);
 	z-index: 2;
 	transition: opacity 0.2s linear, transform 0.2s linear, z-index 0s linear 0s;
 }
+	
+	/* .Account:hover .Account__website { */
+/* 	border-bottom-color: #e0e0e0; */
+/* } */
+
+/* .Account:hover .Account__dropdown { */
+/* 	opacity: 1; */
+/* 	transform: translateY(0); */
+/* 	z-index: 2; */
+/* 	transition: opacity 0.2s linear, transform 0.2s linear, z-index 0s linear 0s; */
+/* } */
 
 .Account__dropdown .Account__url {
 	color: #ffffff;

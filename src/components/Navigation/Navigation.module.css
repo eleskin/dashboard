@@ -10,12 +10,25 @@
 	margin-top: 28px;
 	display: inline-block;
 	margin-left: 16px;
+	opacity: 0;
+	height: 0;
+	width: 0;
+	z-index: -1;
+	transition: var(--longer-transition);
+}
+
+.Navigation_hover .Navigation__label {
+	opacity: 1;
+	height: auto;
+	width: auto;
+	z-index: 0;
 }
 
 .Navigation__list {
 	margin: 8px 0 0 0;
 	padding: 0;
 	list-style: none;
+	transition: var(--longer-transition);
 }
 
 .Navigation__list li {
@@ -33,7 +46,7 @@
 	inset: 0;
 	z-index: 0;
 	transform: translateX(-32px);
-	transition: 0.2s linear;
+	transition: var(--longer-transition);
 }
 
 .Navigation__list li:hover::after {
@@ -73,7 +86,8 @@
 	text-decoration: none;
 	position: relative;
 	z-index: 1;
-	transition: 0.2s linear;
+	transition: var(--longer-transition);
+	white-space: nowrap;
 }
 
 .Navigation__list li a span {
@@ -84,13 +98,44 @@
 	grid-column-gap: 28px;
 }
 
+.Navigation__list li a span i {
+	color: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	width: 0;
+	opacity: 0;
+	overflow: hidden;
+	transition: var(--longer-transition);
+	z-index: -1;
+}
+
+.Navigation_hover .Navigation__list li a span i {
+	width: 100%;
+	z-index: 0;
+	opacity: 1;
+}
+
 .Navigation__list li a span img {
 	width: 24px;
-	transition: 0.2s linear;
+	transition: var(--longer-transition);
+	transform: translateX(54%);
+}
+
+.Navigation_hover .Navigation__list li a span img {
+	transform: translateX(0);
 }
 
 .Navigation__list li a i {
 	color: #7f7f7f;
 	font-size: 12px;
-	transition: 0.2s linear;
+	transition: var(--longer-transition);
+	width: 0;
+	opacity: 0;
+	overflow: hidden;
+	z-index: -1;
+}
+.Navigation_hover .Navigation__list li a i {
+	width: auto;
+	z-index: 0;
+	opacity: 1;
 }
