@@ -1,0 +1,41 @@
+.User {
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	align-items: center;
+	grid-column-gap: 36px;
+	margin-right: 32px;
+}
+
+.User__messages {
+	position: relative;
+}
+
+.User__messages i {
+	position: absolute;
+	top: 0;
+	right: 0;
+	transform: translate(14px, -14px);
+	background: #E45456;
+	border-radius: 5px;
+	font-weight: 500;
+	font-size: 11px;
+	color: #FFFFFF;
+	height: 20px;
+	width: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-style: normal;
+}
+
+.User__messages, .User__settings {
+	transform: translateY(2px);
+}
+
+.User__profile {
+	width: 42px;
+	height: 42px;
+	background: #717171;
+	border-radius: 50%;
+}
