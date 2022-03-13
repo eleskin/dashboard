@@ -1,15 +1,15 @@
 import styles from './Account.module.css';
-
 import {Dispatch, MouseEventHandler, SetStateAction, useMemo, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEnvelope, faUser, faMoneyBill1, faBell} from '@fortawesome/free-regular-svg-icons';
 import {faArrowRightFromBracket, faChevronDown} from '@fortawesome/free-solid-svg-icons';
+import {useGetFaviconURL} from '../../utils/hooks';
 
 const Account: Function = ({isHovering}: { isHovering: boolean }): JSX.Element => {
 	const [isActiveDropdown, setIsActiveDropdown]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(Boolean(false));
 	
 	const [websiteURL]: [string, Dispatch<SetStateAction<string>>] = useState('https://apple.com/');
-	const [faviconURL]: [string, Dispatch<SetStateAction<string>>] = useState(`https://www.google.com/s2/favicons?domain=${websiteURL}`);
+	const [faviconURL]: [string, Dispatch<SetStateAction<string>>] = useGetFaviconURL(websiteURL);
 	
 	const AccountWebsite: JSX.Element = useMemo(() => (
 		<div className={styles.Account__website}>
@@ -21,14 +21,14 @@ const Account: Function = ({isHovering}: { isHovering: boolean }): JSX.Element =
 		</div>
 	), [faviconURL]);
 	
-	const handleClickButton: MouseEventHandler = (): void => setIsActiveDropdown(true);
+	const handleButtonClick: MouseEventHandler = (): void => setIsActiveDropdown(true);
 	const handleMouseLeave: MouseEventHandler = (): void => setIsActiveDropdown(false);
 	
 	return (
 		<div className={`${styles.Account} ${isHovering && styles.Account_hover} ${isActiveDropdown && styles.Account_active}`}>
 			<i/>
 			{AccountWebsite}
-			<button className={styles.Account__button} onClick={handleClickButton}>
+			<button className={styles.Account__button} onClick={handleButtonClick}>
 				<FontAwesomeIcon icon={faChevronDown}/>
 			</button>
 			<div className={styles.Account__dropdown} onMouseLeave={handleMouseLeave}>

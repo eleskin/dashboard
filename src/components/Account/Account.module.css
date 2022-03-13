@@ -36,6 +36,10 @@
 	border-radius: 50%;
 }
 
+.Account__icon i img {
+	filter: brightness(0%);
+}
+
 .Account__url {
 	margin-top: 8px;
 	font-weight: 400;
@@ -106,7 +110,7 @@
 	background-color: #1b5bd9;
 	opacity: 0;
 	transform: translateY(5%);
-	transition: opacity 0.2s linear, transform 0.2s linear, z-index 0s linear 0.2s;
+	transition: var(--dropdown-transition);
 	z-index: -1;
 }
 

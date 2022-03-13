@@ -1,13 +1,8 @@
-.Navbar {
+.Header {
 	background: #ffffff;
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-	height: 100%;
-	width: 112px;
 	transition: var(--longer-transition);
-	position: absolute;
-	z-index: 2;
-}
-
-.Navbar_hover {
-	width: 20%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }

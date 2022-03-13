@@ -3,6 +3,7 @@
 :root {
 	--main-transition: all 0.1s linear;
 	--longer-transition: all 0.2s linear;
+	--dropdown-transition: opacity 0.2s linear, transform 0.2s linear, z-index 0s linear 0.2s;
 }
 
 
