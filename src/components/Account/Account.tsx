@@ -25,7 +25,7 @@ const Account: Function = ({isHovering}: { isHovering: boolean }): JSX.Element =
 	const handleMouseLeave: MouseEventHandler = (): void => setIsActiveDropdown(false);
 	
 	return (
-		<div className={`${styles.Account} ${isHovering && styles.Account_hover} ${isActiveDropdown && styles.Account_active}`}>
+		<div className={`${styles.Account} ${isHovering ? styles.Account_hover : ''} ${isActiveDropdown && styles.Account_active}`}>
 			<i/>
 			{AccountWebsite}
 			<button className={styles.Account__button} onClick={handleButtonClick}>

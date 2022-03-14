@@ -8,7 +8,7 @@ const Steps: Function = (): JSX.Element => {
 	const step: Function = useCallback((title: string, subtitle: string, isCompleted: boolean): JSX.Element => (
 		<a
 			href="/"
-			className={`${styles.Steps__step} ${isCompleted && styles.Steps__step_completed}`}
+			className={`${styles.Steps__step} ${isCompleted ? styles.Steps__step_completed : ''}`}
 			onClick={(event) => isCompleted && event.preventDefault()}
 		>
 			<div>

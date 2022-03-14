@@ -13,7 +13,7 @@ import navigation_image_7 from '../../assets/images/navigation/navigation-icon-7
 
 const Navigation: Function = ({isHovering}: {isHovering: boolean}): JSX.Element => {
 	return (
-		<div className={`${styles.Navigation} ${isHovering && styles.Navigation_hover}`}>
+		<div className={`${styles.Navigation} ${isHovering ? styles.Navigation_hover : ''}`}>
 			<span className={styles.Navigation__label}>SERVICES</span>
 			<ul className={styles.Navigation__list}>
 				<li>

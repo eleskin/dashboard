@@ -13,7 +13,7 @@ const Navbar: Function = (): JSX.Element => {
 	
 	return (
 		<aside
-			className={`${styles.Navbar} ${isHovering && styles.Navbar_hover}`}
+			className={`${styles.Navbar} ${isHovering ? styles.Navbar_hover : ''}`}
 			onMouseOver={handleMouseOver}
 			onMouseLeave={handleMouseLeave}
 		>

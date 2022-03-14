@@ -14,7 +14,7 @@ const Accounts: Function = (): JSX.Element => {
 	const handleButtonClick: MouseEventHandler = (): void => setIsActiveDropdown(!isActiveDropdown);
 	
 	return (
-		<div className={`${styles.Accounts} ${isActiveDropdown && styles.Accounts_active}`}>
+		<div className={`${styles.Accounts} ${isActiveDropdown ? styles.Accounts_active : ''}`}>
 			<div className={styles.Accounts__selected}>
 				<div className={styles.Accounts__account}>
 					<div className={styles.Accounts__card}>
