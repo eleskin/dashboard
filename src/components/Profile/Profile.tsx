@@ -1,8 +1,9 @@
-import Steps from '../Steps/Steps';
 import styles from './Profile.module.css';
 
 import Headline from '../Headline/Headline';
 import Progress from '../Progress/Progress';
+import Bonus from '../Bonus/Bonus';
+import Steps from '../Steps/Steps';
 
 const Profile: Function = (): JSX.Element => {
 	return (
@@ -25,6 +26,7 @@ const Profile: Function = (): JSX.Element => {
 			<Headline/>
 			<Progress value={65}/>
 			<Steps/>
+			<Bonus/>
 		</div>
 	);
 };
