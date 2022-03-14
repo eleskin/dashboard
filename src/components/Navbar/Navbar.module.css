@@ -11,3 +11,21 @@
 .Navbar_hover {
 	width: 20%;
 }
+
+@media (max-height: 640px) {
+	.Navbar_hover {
+		width: 112px;
+	}
+}
+
+@media (max-height: 480px) {
+	.Navbar, .Navbar_hover {
+		width: 80px;
+	}
+}
+
+@media (max-height: 440px) {
+	.Navbar, .Navbar_hover {
+		width: 60px;
+	}
+}
