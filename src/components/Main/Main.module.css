@@ -1,3 +1,12 @@
 .Main {
 	padding-left: 112px;
+	min-height: 100vh;
+	height: 100%;
+	display: grid;
+	grid-template-rows: auto 1fr;
+}
+
+.Main__grid {
+	display: grid;
+	grid-template-columns: 10fr 3fr;
 }

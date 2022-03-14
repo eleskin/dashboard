@@ -1,0 +1,30 @@
+.Profile {
+	padding: 36px 18px;
+	background-color: #293245;
+}
+
+.Profile__title {
+	font-weight: 500;
+	font-size: 16px;
+	letter-spacing: 0.04em;
+	color: #ffffff;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.Profile__title button {
+	border: none;
+	border-radius: 0;
+	background-color: transparent;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+}

@@ -1,0 +1,33 @@
+.Progress {
+	display: flex;
+	align-items: center;
+	grid-column-gap: 20px;
+	width: 100%;
+}
+
+.Progress__title {
+	font-weight: 500;
+	font-size: 22px;
+	letter-spacing: 0.04em;
+	color: #cdd9e8;
+}
+
+.Progress__bar {
+	background-color: #343c4e;
+	border-radius: 16px;
+	padding: 4px;
+	width: 100%;
+}
+
+.Progress__bar span {
+	display: block;
+	height: 20px;
+	background: linear-gradient(90deg, #ff0000 0%, #ffe600 42.19%, #39e768 82.29%);
+	border-radius: 16px;
+	animation: progress-bar-animation 1s;
+}
+
+@keyframes progress-bar-animation {
+	from {width: 0;}
+	to {width: 100%;}
+}
