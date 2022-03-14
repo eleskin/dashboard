@@ -1,3 +1,4 @@
+import Steps from '../Steps/Steps';
 import styles from './Profile.module.css';
 
 import Headline from '../Headline/Headline';
@@ -23,6 +24,7 @@ const Profile: Function = (): JSX.Element => {
 			</h3>
 			<Headline/>
 			<Progress value={65}/>
+			<Steps/>
 		</div>
 	);
 };

@@ -3,6 +3,7 @@
 	align-items: center;
 	grid-column-gap: 20px;
 	width: 100%;
+	padding-top: 16px;
 }
 
 .Progress__title {
