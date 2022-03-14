@@ -10,3 +10,15 @@
 	display: grid;
 	grid-template-columns: 10fr 3fr;
 }
+
+@media (max-height: 480px) {
+	.Main {
+		padding-left: 80px;
+	}
+}
+
+@media (max-height: 440px) {
+	.Main {
+		padding-left: 60px;
+	}
+}
