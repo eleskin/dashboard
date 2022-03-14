@@ -1,6 +1,8 @@
 .Profile {
 	padding: 36px 18px;
 	background-color: #293245;
+	height: calc(100vh - 64.4px);
+	overflow-y: scroll;
 }
 
 .Profile__title {

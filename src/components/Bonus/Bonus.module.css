@@ -44,6 +44,7 @@
 	color: #000000;
 	border: none;
 	outline: none;
+	width: 100%;
 }
 
 .Bonus__input input[type='text']::placeholder {
