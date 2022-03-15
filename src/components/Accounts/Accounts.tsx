@@ -62,7 +62,7 @@ const Accounts: Function = (): JSX.Element => {
 						<i>Balance: $5,304</i>
 					</div>
 				</div>
-				<div className={styles.Accounts__account}>
+				<div className={`${styles.Accounts__account} ${styles.Accounts__account_active}`}>
 					<div className={styles.Accounts__card}>
 						<img src={faviconURL} alt=""/>
 					</div>

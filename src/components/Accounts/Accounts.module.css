@@ -16,6 +16,16 @@
 	grid-column-gap: 24px;
 }
 
+.Accounts__account_active::before {
+	content: '';
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #feb82c;
+	position: absolute;
+	transform: translateX(-24px);
+}
+
 .Accounts__card {
 	background: linear-gradient(180deg, #fdfeff 0%, #ddeafe 100%);
 	border-radius: 4px;
