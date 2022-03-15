@@ -29,3 +29,21 @@
 		width: 60px;
 	}
 }
+
+@media (max-width: 960px) {
+	.Navbar_hover {
+		width: 112px;
+	}
+}
+
+@media (max-width: 540px) {
+	.Navbar {
+		transform: translateX(-100%);
+		width: fit-content;
+	}
+	
+	.Navbar_hover {
+		transform: translateX(0);
+		width: fit-content;
+	}
+}

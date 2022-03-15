@@ -23,3 +23,9 @@
 		padding-left: 60px;
 	}
 }
+
+@media (max-width: 540px) {
+	.Main {
+		padding-left: 0;
+	}
+}

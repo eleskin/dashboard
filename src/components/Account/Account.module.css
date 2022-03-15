@@ -170,6 +170,20 @@
 	font-size: 18px;
 }
 
+@media (max-width: 1280px) {
+	.Account__url:not(.Account__dropdown .Account__url) {
+		display: none;
+	}
+	
+	.Account__role:not(.Account__dropdown .Account__role) {
+		display: none;
+	}
+	
+	.Account__icon {
+		transform: translateX(8px);
+	}
+}
+
 @media (max-height: 780px) {
 	.Account__url:not(.Account__dropdown .Account__url) {
 		display: none;
@@ -184,6 +198,16 @@
 	}
 }
 
+@media (max-width: 960px) {
+	.Account__button {
+		display: none;
+	}
+	
+	.Account__icon {
+		transform: translateX(0);
+	}
+}
+
 @media (max-height: 640px) {
 	.Account__button {
 		display: none;
@@ -191,6 +215,12 @@
 	
 	.Account__icon {
 		transform: translateX(0);
+	}
+}
+
+@media (max-width: 640px) {
+	.Account {
+		display: none;
 	}
 }
 

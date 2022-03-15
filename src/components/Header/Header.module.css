@@ -2,7 +2,37 @@
 	background: #ffffff;
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 	transition: var(--longer-transition);
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: center;
+}
+
+.Header__menu {
+	font-size: 20px;
+	border: none;
+	background-color: transparent;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	z-index: -1;
+	position: relative;
+	padding: 0;
+}
+
+.Header__container {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	width: 100%;
+}
+
+@media (max-width: 540px) {
+	.Header__menu {
+		height: 100%;
+		width: 100%;
+		padding: 0 12px;
+		z-index: 0;
+		visibility: visible;
+	}
 }

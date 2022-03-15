@@ -3,10 +3,9 @@ import {
 	Dispatch, LegacyRef,
 	MouseEventHandler,
 	SetStateAction,
-	useEffect,
 	useState,
 } from 'react';
-import {useGetFaviconURL} from '../../utils/hooks';
+import {useGetFaviconURL, useOutsideClickHandler} from '../../utils/hooks';
 import styles from './Accounts.module.css';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -22,13 +21,7 @@ const Accounts: Function = (): JSX.Element => {
 	
 	const accountsElement: LegacyRef<HTMLDivElement> | undefined = createRef();
 	
-	useEffect((): () => void => {
-		const onClick: (event: Event) => void = (event: Event): void => {
-			accountsElement.current?.contains(event.target as Node) || (isActiveDropdown && setIsActiveDropdown(false));
-		};
-		document.addEventListener('click', onClick);
-		return (): void => document.removeEventListener('click', onClick);
-	}, [accountsElement, isActiveDropdown]);
+	useOutsideClickHandler(accountsElement, isActiveDropdown, setIsActiveDropdown);
 	
 	return (
 		<div
