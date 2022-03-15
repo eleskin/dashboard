@@ -1,8 +1,57 @@
 .Profile {
+	position: relative;
+	transform: translateX(100%);
+	transition: var(--longer-transition);
+}
+
+.Profile_active {
+	transform: translateX(0);
+}
+
+.Profile__toggle {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	margin: auto;
+	width: 70px;
+	height: 70px;
+	transform: translateX(-25px);
+	border-radius: 50%;
+	border: none;
+	cursor: pointer;
+	background-color: #ffffff;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+	transition: var(--main-transition);
+}
+
+.Profile__toggle:hover {
+	box-shadow: none;
+	transform: translateX(-30px);
+}
+
+.Profile_active .Profile__toggle {
+	transform: translateX(100%);
+}
+
+.Profile__toggle svg {
+	transform: translateX(-18px);
+	font-size: 16px;
+	color: #000000;
+	transition: var(--main-transition);
+}
+
+.Profile__toggle:hover svg {
+	transform: translateX(-15px);
+}
+
+.Profile__container {
 	padding: 36px 18px;
 	background-color: #293245;
 	height: calc(100vh - 64.4px);
 	overflow-y: scroll;
+	position: relative;
+	z-index: 1;
 }
 
 .Profile__title {
