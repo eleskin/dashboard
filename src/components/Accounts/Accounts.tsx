@@ -1,9 +1,16 @@
-import {Dispatch, MouseEventHandler, SetStateAction, useState} from 'react';
+import {
+	createRef,
+	Dispatch, LegacyRef,
+	MouseEventHandler,
+	SetStateAction,
+	useEffect,
+	useState,
+} from 'react';
 import {useGetFaviconURL} from '../../utils/hooks';
 import styles from './Accounts.module.css';
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faChevronDown} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faChevronDown} from '@fortawesome/free-solid-svg-icons';
 
 const Accounts: Function = (): JSX.Element => {
 	const [websiteURL]: [string, Dispatch<SetStateAction<string>>] = useState('https://apple.com/');
@@ -13,8 +20,21 @@ const Accounts: Function = (): JSX.Element => {
 	
 	const handleButtonClick: MouseEventHandler = (): void => setIsActiveDropdown(!isActiveDropdown);
 	
+	const accountsElement: LegacyRef<HTMLDivElement> | undefined = createRef();
+	
+	useEffect((): () => void => {
+		const onClick: (event: Event) => void = (event: Event): void => {
+			accountsElement.current?.contains(event.target as Node) || (isActiveDropdown && setIsActiveDropdown(false));
+		};
+		document.addEventListener('click', onClick);
+		return (): void => document.removeEventListener('click', onClick);
+	}, [accountsElement, isActiveDropdown]);
+	
 	return (
-		<div className={`${styles.Accounts} ${isActiveDropdown ? styles.Accounts_active : ''}`}>
+		<div
+			className={`${styles.Accounts} ${isActiveDropdown ? styles.Accounts_active : ''}`}
+			ref={accountsElement}
+		>
 			<div className={styles.Accounts__selected}>
 				<div className={styles.Accounts__account}>
 					<div className={styles.Accounts__card}>
@@ -28,7 +48,7 @@ const Accounts: Function = (): JSX.Element => {
 				<button className={styles.Accounts__button} onClick={handleButtonClick}>
 					<FontAwesomeIcon
 						icon={faChevronDown}
-						style={{transform: `${isActiveDropdown ? 'rotate(180deg)': ''}`}}
+						style={{transform: `${isActiveDropdown ? 'rotate(180deg)' : ''}`}}
 					/>
 				</button>
 			</div>
