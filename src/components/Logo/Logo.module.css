@@ -50,7 +50,7 @@
 	font-size: 14px;
 	letter-spacing: 0.17em;
 	color: #000000;
-	transition: var(--longer-transition);
+	transition: var(--longer-transition), color var(--main-transition);
 	white-space: nowrap;
 	padding-left: 0;
 	opacity: 0;
@@ -99,7 +99,6 @@
 }
 
 @media (max-width: 960px) {
-	
 	.Logo__icon {
 		transform: translateX(0);
 	}
@@ -130,20 +129,11 @@
 
 @media (max-height: 480px) {
 	.Logo {
-		padding: 12px 0;
+		padding: 16px 0;
 		text-align: center;
 	}
 	
-	.Logo__icon::before, .Logo__icon::after {
-		width: 16px;
-		height: 16px;
-	}
-	
-	.Logo__icon::before {
-		left: 4px;
-	}
-	
-	.Logo__icon::after {
-		left: -4px;
+	.Logo__icon {
+		transform: translateX(0);
 	}
 }

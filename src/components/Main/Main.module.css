@@ -12,6 +12,30 @@
 	grid-template-columns: 10fr 3fr;
 }
 
+@media (max-width: 1080px) {
+	.Main__grid {
+		grid-template-columns: 10fr 4fr;
+	}
+}
+
+@media (max-width: 960px) {
+	.Main__grid {
+		grid-template-columns: 10fr 5fr;
+	}
+}
+
+@media (max-width: 720px) {
+	.Main__grid {
+		grid-template-columns: 5fr 5fr;
+	}
+}
+
+@media (max-width: 480px) {
+	.Main__grid {
+		grid-template-columns: 2fr 5fr;
+	}
+}
+
 @media (max-height: 480px) {
 	.Main {
 		padding-left: 80px;

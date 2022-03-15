@@ -32,3 +32,24 @@
 	from {width: 0;}
 	to {width: 100%;}
 }
+
+@media (max-width: 1170px) {
+	.Progress {
+		grid-column-gap: 12px;
+		padding-top: 4px;
+	}
+	
+	.Progress__title {
+		font-size: 16px;
+	}
+	
+	.Progress__bar span {
+		height: 12px;
+	}
+}
+
+@media (max-width: 840px) {
+	.Progress__title {
+		font-size: 14px;
+	}
+}

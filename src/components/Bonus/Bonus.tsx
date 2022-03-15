@@ -6,7 +6,7 @@ const Bonus: Function = (): JSX.Element => {
 			<span className={styles.Bonus__title}>BONUS</span>
 			<p className={styles.Bonus__text}>Invite your friends and make money width referrals</p>
 			<label className={styles.Bonus__input}>
-				<input type="text" placeholder="Email address..." required={true}/>
+				<input type="email" placeholder="Email address..." required={true}/>
 				<input type="submit" value="Send"/>
 			</label>
 		</form>

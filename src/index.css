@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
 :root {
-	--main-transition: all 0.1s linear;
-	--longer-transition: all 0.2s linear;
+	--main-transition: 0.1s linear;
+	--longer-transition: 0.2s linear;
 	--dropdown-transition: opacity 0.2s linear, transform 0.2s linear, z-index 0s linear 0.2s;
 }
 
@@ -21,7 +21,7 @@ html {
 
 ::-webkit-scrollbar {
 	width: 10px;
-	background-color: #ffffff;
+	background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
