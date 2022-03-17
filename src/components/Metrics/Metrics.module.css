@@ -1,0 +1,37 @@
+.Metrics__grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-column-gap: 20px;
+}
+
+.Metrics__add {
+	padding: 12px;
+	background-color: #e9ecf3;
+	border: 1px dashed #adbfd9;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	grid-row-gap: 8px;
+	cursor: pointer;
+	transition: var(--main-transition);
+}
+
+.Metrics__add:hover {
+	opacity: 0.8;
+}
+
+.Metrics__add i {
+	background-color: #1477FB;
+	width: 32px;
+	height: 32px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-style: normal;
+	color: #ffffff;
+	border-radius: 50%;
+}
