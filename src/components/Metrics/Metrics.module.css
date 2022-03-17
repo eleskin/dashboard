@@ -1,6 +1,6 @@
 .Metrics__grid {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: calc(25% - 10px) calc(25% - 20px) calc(25% - 20px) calc(25% - 10px);
 	grid-column-gap: 20px;
 }
 
