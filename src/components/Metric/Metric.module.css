@@ -1,0 +1,52 @@
+.Metric {
+	background-color: #ffffff;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+	border-radius: 6px;
+	padding: 28px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.Metric__title {
+	font-weight: 500;
+	font-size: 11px;
+	letter-spacing: 0.2em;
+	color: #000000;
+}
+
+.Metric__negative .Metric__title {
+	color: #a0a0a0;
+}
+
+.Metric__value {
+	font-weight: 500;
+	font-size: 30px;
+	color: #3f4b5b;
+}
+
+.Metric__negative .Metric__value {
+	color: #e45456;
+}
+
+.Metric__changing {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	font-style: normal;
+	background-color: #2eb226;
+	border-radius: 4px;
+	color: #ffffff;
+	padding: 4px;
+	font-weight: 500;
+	font-size: 11px;
+	display: flex;
+	align-items: center;
+	grid-column-gap: 4px;
+}
+
+.Metric__negative .Metric__changing {
+	background-color: #e45456;
+}
