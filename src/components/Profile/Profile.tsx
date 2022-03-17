@@ -34,7 +34,7 @@ const Profile: Function = (): JSX.Element => {
 						</svg>
 					</button>
 				</h3>
-				<Headline/>
+				<Headline theme="dark"/>
 				<Progress value={65}/>
 				<Steps/>
 				<Bonus/>

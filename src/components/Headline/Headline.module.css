@@ -3,8 +3,12 @@
 	align-items: center;
 	width: 100%;
 	height: 1px;
-	background-color: #343c4e;
+	background-color: #e6e8eb;
 	margin: 18px 0;
+}
+
+.Headline__dark {
+	background-color: #343c4e;
 }
 
 .Headline::before {
@@ -12,5 +16,5 @@
 	display: block;
 	width: 26px;
 	height: 4px;
-	background: #1477FB;
+	background: #1477fb;
 }
