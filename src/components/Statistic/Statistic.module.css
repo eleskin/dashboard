@@ -1,11 +1,67 @@
 .Statistic {
 	display: grid;
 	grid-template-columns: calc(25% - 10px) calc(75% - 10px);
+	grid-template-rows: 1fr;
 	grid-column-gap: 20px;
+}
+
+.Statistic > div {
+	display: grid;
+	grid-template-rows: auto 1fr;
 }
 
 .Statistic__visualisation, .Statistic__table {
 	padding: 20px 24px;
+}
+
+.Statistic__visualisation {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.Statistic__visualisation > img {
+	width: 100%;
+}
+
+.Statistic__visualisation ul {
+	margin: 16px 0 0 0;
+	padding: 16px 0 0 0;
+	list-style: none;
+	border-top: 1px solid #e5e5e5;
+	width: 100%;
+}
+
+.Statistic__visualisation ul li {
+	padding: 0;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	grid-column-gap: 6px;
+}
+
+.Statistic__visualisation ul li > i {
+	width: 10px;
+	height: 10px;
+	background-color: #74C02E;
+	display: block;
+	border-radius: 50%;
+}
+
+.Statistic__visualisation ul li > span {
+	display: flex;
+	flex-direction: column;
+	font-weight: 500;
+	font-size: 14px;
+	color: #3F4B5B;
+}
+
+.Statistic__visualisation ul li > span > i {
+	font-weight: 500;
+	font-size: 12px;
+	font-style: normal;
+	color: #AEB3BF;
 }
 
 .Statistic__table table {

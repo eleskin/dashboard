@@ -1,6 +1,7 @@
+import styles from './Statistic.module.css';
 import Card from '../Card/Card';
 import Title from '../Title/Title';
-import styles from './Statistic.module.css';
+import statistic_image_1 from '../../assets/images/statistic/statistic-image-1.svg';
 
 const Statistic: Function = (): JSX.Element => {
 	return (
@@ -9,7 +10,23 @@ const Statistic: Function = (): JSX.Element => {
 				<Title value="Sales Dashboard"/>
 				<Card>
 					<div className={styles.Statistic__visualisation}>
-					
+						<img src={statistic_image_1} alt=""/>
+						<ul>
+							<li>
+								<i style={{backgroundColor: '#74c02e'}}/>
+								<span>
+									Google Ads
+									<i>67%</i>
+								</span>
+							</li>
+							<li>
+								<i style={{backgroundColor: '#5a99f9'}}/>
+								<span>
+									Facebook
+									<i>67%</i>
+								</span>
+							</li>
+						</ul>
 					</div>
 				</Card>
 			</div>
