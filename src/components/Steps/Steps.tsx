@@ -1,5 +1,4 @@
 import styles from './Steps.module.css';
-
 import React, {useCallback} from 'react';
 import steps_icon_1 from '../../assets/images/steps/steps-icon-1.svg';
 import steps_icon_2 from '../../assets/images/steps/steps-icon-2.svg';

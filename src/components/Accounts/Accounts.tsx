@@ -1,3 +1,4 @@
+import styles from './Accounts.module.css';
 import {
 	createRef,
 	Dispatch, LegacyRef,
@@ -6,8 +7,6 @@ import {
 	useState,
 } from 'react';
 import {useGetFaviconURL, useOutsideClickHandler} from '../../utils/hooks';
-import styles from './Accounts.module.css';
-
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronDown} from '@fortawesome/free-solid-svg-icons';
 

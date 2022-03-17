@@ -1,6 +1,5 @@
-import {Dispatch, SetStateAction, useState} from 'react';
 import styles from './App.module.css';
-
+import {Dispatch, SetStateAction, useState} from 'react';
 import Main from './components/Main/Main';
 import Navbar from './components/Navbar/Navbar';
 

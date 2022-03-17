@@ -1,5 +1,4 @@
 import styles from './Metrics.module.css';
-
 import Metric from '../Metric/Metric';
 import Select from '../Select/Select';
 import Title from '../Title/Title';

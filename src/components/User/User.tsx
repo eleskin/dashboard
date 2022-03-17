@@ -1,7 +1,6 @@
 import styles from './User.module.css';
-
-import user_icon_1 from '../../assets/images/user/user-icon-1.svg'
-import user_icon_2 from '../../assets/images/user/user-icon-2.svg'
+import user_icon_1 from '../../assets/images/user/user-icon-1.svg';
+import user_icon_2 from '../../assets/images/user/user-icon-2.svg';
 
 const User: Function = (): JSX.Element => {
 	return (

@@ -1,5 +1,4 @@
 import styles from './Title.module.css';
-
 import Headline from '../Headline/Headline';
 
 const Title: Function = ({value, children}: { value: string, children?: JSX.Element }): JSX.Element => {

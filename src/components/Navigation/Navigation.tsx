@@ -1,8 +1,6 @@
 import styles from './Navigation.module.css';
-
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronRight} from '@fortawesome/free-solid-svg-icons';
-
 import navigation_image_1 from '../../assets/images/navigation/navigation-icon-1.svg';
 import navigation_image_2 from '../../assets/images/navigation/navigation-icon-2.svg';
 import navigation_image_3 from '../../assets/images/navigation/navigation-icon-3.svg';
@@ -11,7 +9,7 @@ import navigation_image_5 from '../../assets/images/navigation/navigation-icon-5
 import navigation_image_6 from '../../assets/images/navigation/navigation-icon-6.svg';
 import navigation_image_7 from '../../assets/images/navigation/navigation-icon-7.svg';
 
-const Navigation: Function = ({isHovering}: {isHovering: boolean}): JSX.Element => {
+const Navigation: Function = ({isHovering}: { isHovering: boolean }): JSX.Element => {
 	return (
 		<div className={`${styles.Navigation} ${isHovering ? styles.Navigation_hover : ''}`}>
 			<span className={styles.Navigation__label}>SERVICES</span>
