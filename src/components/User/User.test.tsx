@@ -3,6 +3,6 @@ import User from './User';
 
 test('User render', () => {
 	render(<User/>);
-	const element = screen.getAllByText(/12/i)[0] as HTMLAnchorElement;
-	expect(element).toBeInTheDocument();
+	const firstElement = screen.getAllByText(/12/i)[0] as HTMLAnchorElement;
+	expect(firstElement).toBeInTheDocument();
 });

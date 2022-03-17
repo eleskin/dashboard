@@ -3,6 +3,6 @@ import Metrics from './Metrics';
 
 test('Metrics render', () => {
 	render(<Metrics/>);
-	const linkElement = screen.getByText(/Metric/i);
-	expect(linkElement).toBeInTheDocument();
+	const firstElement = screen.getAllByText(/Metric/i)[0] as HTMLAnchorElement;
+	expect(firstElement).toBeInTheDocument();
 });

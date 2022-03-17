@@ -3,6 +3,6 @@ import Card from './Card';
 
 test('Card render', () => {
 	render(<Card>Card</Card>);
-	const element = screen.getByText(/Card/i);
-	expect(element).toBeInTheDocument();
+	const firstElement = screen.getAllByText(/Card/i)[0] as HTMLAnchorElement;
+	expect(firstElement).toBeInTheDocument();
 });

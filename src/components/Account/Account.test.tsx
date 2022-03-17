@@ -3,6 +3,6 @@ import Account from './Account';
 
 test('Account render', () => {
 	render(<Account/>);
-	const element = screen.getByText(/Incoming Mail/i);
-	expect(element).toBeInTheDocument();
+	const firstElement = screen.getAllByText(/Incoming Mail/i)[0] as HTMLAnchorElement;
+	expect(firstElement).toBeInTheDocument();
 });

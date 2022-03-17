@@ -3,6 +3,6 @@ import Recommended from './Recommended';
 
 test('Recommended render', () => {
 	render(<Recommended/>);
-	const element = screen.getByText(/Recommended/i);
-	expect(element).toBeInTheDocument();
+	const firstElement = screen.getAllByText(/Recommended/i)[0] as HTMLAnchorElement;
+	expect(firstElement).toBeInTheDocument();
 });

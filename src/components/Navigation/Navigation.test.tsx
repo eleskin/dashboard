@@ -3,6 +3,6 @@ import Navigation from './Navigation';
 
 test('Navigation render', () => {
 	render(<Navigation/>);
-	const element = screen.getByText(/Dashboard/i);
-	expect(element).toBeInTheDocument();
+	const firstElement = screen.getAllByText(/Dashboard/i)[0] as HTMLAnchorElement;
+	expect(firstElement).toBeInTheDocument();
 });

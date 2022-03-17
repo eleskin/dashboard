@@ -3,6 +3,6 @@ import Bonus from './Bonus';
 
 test('Bonus render', () => {
 	render(<Bonus/>)
-	const element = screen.getByText(/BONUS/i);
-	expect(element).toBeInTheDocument();
+	const firstElement = screen.getAllByText(/BONUS/i)[0] as HTMLAnchorElement;
+	expect(firstElement).toBeInTheDocument();
 });

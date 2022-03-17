@@ -3,6 +3,6 @@ import Logo from './Logo';
 
 test('Logo render', () => {
 	render(<Logo/>);
-	const linkElement = screen.getByText(/CLEAN ADMIN/i);
-	expect(linkElement).toBeInTheDocument();
+	const firstElement = screen.getAllByText(/CLEAN ADMIN/i)[0] as HTMLAnchorElement;
+	expect(firstElement).toBeInTheDocument();
 });
