@@ -2,9 +2,6 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	background-color: #ffffff;
-	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
-	border-radius: 6px;
 	padding: 20px;
 	position: relative;
 	background-position: center center;

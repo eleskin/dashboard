@@ -9,7 +9,7 @@ import {faPlus} from '@fortawesome/free-solid-svg-icons';
 const Metrics: Function = (): JSX.Element => {
 	return (
 		<div className={styles.Metrics}>
-			<Title value="Recommended">
+			<Title value="Metrics">
 				<Select options={['Today', 'Last week', 'Last month']}/>
 			</Title>
 			<div className={styles.Metrics__grid}>
