@@ -1,5 +1,5 @@
 import styles from './Profile.module.css';
-import {Dispatch, MouseEventHandler, SetStateAction, useState} from 'react';
+import {Dispatch, MouseEventHandler, SetStateAction} from 'react';
 import Headline from '../Headline/Headline';
 import Progress from '../Progress/Progress';
 import Bonus from '../Bonus/Bonus';
@@ -7,8 +7,10 @@ import Steps from '../Steps/Steps';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 
-const Profile: Function = (): JSX.Element => {
-	const [isActiveProfile, setIsActiveProfile]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(Boolean(true));
+const Profile: Function = ({
+	                           isActiveProfile,
+	                           setIsActiveProfile,
+                           }: { isActiveProfile: boolean, setIsActiveProfile: Dispatch<SetStateAction<boolean>> }): JSX.Element => {
 	
 	const handleButtonClick: MouseEventHandler = (): void => setIsActiveProfile(!isActiveProfile);
 	

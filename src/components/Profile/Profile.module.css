@@ -1,7 +1,6 @@
 .Profile {
 	position: relative;
 	transform: translateX(calc(100% + 1px));
-	transition: var(--longer-transition);
 }
 
 .Profile_active {

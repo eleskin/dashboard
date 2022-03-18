@@ -12,6 +12,10 @@
 	grid-template-columns: 10fr 3fr;
 }
 
+.Main__grid_one {
+	grid-template-columns: 1fr 0;
+}
+
 .Main__elements {
 	padding: 32px;
 	overflow-y: scroll;
@@ -32,6 +36,10 @@
 		grid-template-columns: 10fr 5fr;
 	}
 	
+	.Main__grid_one {
+		grid-template-columns: 1fr 0;
+	}
+	
 	.Main__elements {
 		height: calc(100vh - 45px);
 	}
@@ -41,11 +49,19 @@
 	.Main__grid {
 		grid-template-columns: 5fr 5fr;
 	}
+	
+	.Main__grid_one {
+		grid-template-columns: 1fr 0;
+	}
 }
 
 @media (max-width: 480px) {
 	.Main__grid {
 		grid-template-columns: 2fr 5fr;
+	}
+	
+	.Main__grid_one {
+		grid-template-columns: 1fr 0;
 	}
 }
 
