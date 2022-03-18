@@ -6,8 +6,33 @@
 	margin-right: 32px;
 }
 
-.User__messages {
+.User a {
 	position: relative;
+}
+
+.User a:not(.User__profile)::before {
+	content: '';
+	display: block;
+	inset: 0;
+	top: 50%;
+	left: 50%;
+	width: 42px;
+	height: 42px;
+	background-color: #999999;
+	position: absolute;
+	z-index: -1;
+	transform: translateX(-21px) translateY(-22px);
+	opacity: 0;
+	border-radius: 50%;
+	transition: var(--main-transition);
+}
+
+.User a:hover::before {
+	opacity: 0.3;
+}
+
+.User a:active::before {
+	opacity: 0.5;
 }
 
 .User__messages i {

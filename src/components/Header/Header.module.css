@@ -5,6 +5,7 @@
 	display: grid;
 	grid-template-columns: auto 1fr;
 	align-items: center;
+	z-index: 1;
 }
 
 .Header__menu {
