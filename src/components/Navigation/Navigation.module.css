@@ -235,11 +235,6 @@
 		justify-content: center;
 	}
 	
-	.Navigation__list li a .Navigation__item {
-		/* padding: 14px 0; */
-		/* font-size: 14px; */
-	}
-	
 	.Navigation_hover .Navigation__list li a .Navigation__item span i {
 		display: none;
 	}
