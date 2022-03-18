@@ -16,32 +16,42 @@ const Navigation: Function = ({isHovering}: { isHovering: boolean }): JSX.Elemen
 			<ul className={styles.Navigation__list}>
 				<li>
 					<a href="/">
-						<span><img src={navigation_image_1} alt=""/> <i>Dashboard</i></span>
-						<i><FontAwesomeIcon icon={faChevronRight}/></i>
+						<span className={styles.Navigation__item}>
+							<span><img src={navigation_image_1} alt=""/> <i>Dashboard</i></span>
+							<i><FontAwesomeIcon icon={faChevronRight}/></i>
+						</span>
 					</a>
 				</li>
 				<li>
 					<a href="/">
-						<span><img src={navigation_image_2} alt=""/> <i>Google Ad</i></span>
-						<i><FontAwesomeIcon icon={faChevronRight}/></i>
+						<span className={styles.Navigation__item}>
+							<span><img src={navigation_image_2} alt=""/> <i>Google Ad</i></span>
+							<i><FontAwesomeIcon icon={faChevronRight}/></i>
+						</span>
 					</a>
 				</li>
 				<li>
 					<a href="/">
-						<span><img src={navigation_image_3} alt=""/> <i>SEO rank</i></span>
-						<i><FontAwesomeIcon icon={faChevronRight}/></i>
+						<span className={styles.Navigation__item}>
+							<span><img src={navigation_image_3} alt=""/> <i>SEO rank</i></span>
+							<i><FontAwesomeIcon icon={faChevronRight}/></i>
+						</span>
 					</a>
 				</li>
 				<li>
 					<a href="/">
-						<span><img src={navigation_image_4} alt=""/> <i>SEO reports</i></span>
-						<i><FontAwesomeIcon icon={faChevronRight}/></i>
+						<span className={styles.Navigation__item}>
+							<span><img src={navigation_image_4} alt=""/> <i>SEO reports</i></span>
+							<i><FontAwesomeIcon icon={faChevronRight}/></i>
+						</span>
 					</a>
 				</li>
 				<li>
 					<a href="/">
-						<span><img src={navigation_image_5} alt=""/> <i>SMM center</i></span>
-						<i><FontAwesomeIcon icon={faChevronRight}/></i>
+						<span className={styles.Navigation__item}>
+							<span><img src={navigation_image_5} alt=""/> <i>SMM center</i></span>
+							<i><FontAwesomeIcon icon={faChevronRight}/></i>
+						</span>
 					</a>
 				</li>
 			</ul>
@@ -49,14 +59,18 @@ const Navigation: Function = ({isHovering}: { isHovering: boolean }): JSX.Elemen
 			<ul className={styles.Navigation__list}>
 				<li>
 					<a href="/">
-						<span><img src={navigation_image_6} alt=""/> <i>Payments</i></span>
-						<i><FontAwesomeIcon icon={faChevronRight}/></i>
+						<span className={styles.Navigation__item}>
+							<span><img src={navigation_image_6} alt=""/> <i>Payments</i></span>
+							<i><FontAwesomeIcon icon={faChevronRight}/></i>
+						</span>
 					</a>
 				</li>
 				<li>
 					<a href="/">
-						<span><img src={navigation_image_7} alt=""/> <i>Help center</i></span>
-						<i><FontAwesomeIcon icon={faChevronRight}/></i>
+						<span className={styles.Navigation__item}>
+							<span><img src={navigation_image_7} alt=""/> <i>Help center</i></span>
+							<i><FontAwesomeIcon icon={faChevronRight}/></i>
+						</span>
 					</a>
 				</li>
 			</ul>
