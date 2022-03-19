@@ -7,7 +7,7 @@ import Recommended from '../Recomended/Recommended';
 import Statistic from '../Statistic/Statistic';
 
 const Main: Function = ({setIsHovering}: { setIsHovering: Dispatch<SetStateAction<boolean>> }): JSX.Element => {
-	const [isActiveProfile, setIsActiveProfile]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(Boolean(true));
+	const [isActiveProfile, setIsActiveProfile]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(Boolean(false));
 	
 	return (
 		<main className={styles.Main}>
