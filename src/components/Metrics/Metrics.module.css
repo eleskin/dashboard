@@ -1,7 +1,7 @@
 .Metrics__grid {
 	display: grid;
 	grid-template-columns: calc(25% - 10px) calc(25% - 20px) calc(25% - 20px) calc(25% - 10px);
-	grid-column-gap: 20px;
+	grid-gap: 20px;
 }
 
 .Metrics__add {
@@ -34,4 +34,51 @@
 	font-style: normal;
 	color: #ffffff;
 	border-radius: 50%;
+}
+
+@media (max-width: 1080px) {
+	.Metrics__add br {
+		display: none;
+	}
+	
+	.Metrics__add i {
+		width: 24px;
+		height: 24px;
+	}
+}
+
+@media (max-width: 960px) {
+	.Metrics__grid {
+		display: grid;
+		grid-template-columns: calc(25% - 5px) calc(25% - 10px) calc(25% - 10px) calc(25% - 5px);
+		grid-column-gap: 10px;
+	}
+	
+	.Metrics__add i {
+		width: 20px;
+		height: 20px;
+	}
+	
+	.Metrics__add span {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 840px) {
+	.Metrics__grid {
+		grid-template-columns: calc(100% / 3 - 4px) calc(100% / 3 - 8px) calc(100% / 3 - 4px);
+		grid-gap: 8px;
+	}
+}
+
+@media (max-width: 480px) {
+	.Metrics__grid {
+		grid-template-columns: calc(50% - 4px) calc(50% - 4px);
+	}
+}
+
+@media (max-width: 360px) {
+	.Metrics__grid {
+		grid-template-columns: 100%;
+	}
 }

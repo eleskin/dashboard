@@ -5,6 +5,7 @@
 	justify-content: center;
 	align-items: center;
 	position: relative;
+	height: 100%;
 }
 
 .Metric__title {
@@ -46,4 +47,49 @@
 
 .Metric__negative .Metric__changing {
 	background-color: #e45456;
+}
+
+@media (max-width: 1080px) {
+	.Metric {
+		padding: 24px 12px;
+	}
+	
+	.Metric__title {
+		font-size: 10px;
+	}
+	
+	.Metric__value {
+		font-size: 22px;
+	}
+	
+	.Metric__changing {
+		font-size: 10px;
+	}
+}
+
+@media (max-width: 960px) {
+	.Metric {
+		padding: 28px 4px 4px 4px;
+	}
+	
+	.Metric__title {
+		font-size: 8px;
+	}
+	
+	.Metric__value {
+		font-size: 18px;
+	}
+	
+	.Metric__changing {
+		font-size: 10px;
+		width: calc(100% - 8px);
+		text-align: center;
+		top: 4px;
+		left: 4px;
+		right: 4px;
+		padding: 4px 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }

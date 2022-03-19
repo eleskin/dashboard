@@ -1,7 +1,6 @@
 .Statistic {
 	display: grid;
 	grid-template-columns: calc(25% - 10px) calc(75% - 10px);
-	grid-template-rows: 1fr;
 	grid-column-gap: 20px;
 }
 
@@ -64,9 +63,20 @@
 	color: #AEB3BF;
 }
 
+.Statistic__table {
+	overflow-y: scroll;
+	position: relative;
+}
+
 .Statistic__table table {
 	width: 100%;
 	border-collapse: collapse;
+	min-width: 100%;
+}
+
+.Statistic__table table th, .Statistic__table table td {
+	padding-right: 24px;
+	white-space: nowrap;
 }
 
 .Statistic__table table th {
@@ -97,4 +107,22 @@
 .Statistic__table table tr:last-child td {
 	border-bottom: none;
 	padding-bottom: 0;
+}
+
+@media (max-width: 960px) {
+	.Statistic {
+		grid-template-columns: calc(35% - 5px) calc(65% - 5px);
+		grid-column-gap: 10px;
+	}
+}
+
+@media (max-width: 840px) {
+	.Statistic {
+		grid-template-columns: 100%;
+		grid-gap: 8px;
+	}
+	
+	.Statistic > div:first-child {
+		display: none;
+	}
 }

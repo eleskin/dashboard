@@ -29,6 +29,10 @@
 	.Main__grid {
 		grid-template-columns: 10fr 4fr;
 	}
+	
+	.Main__grid_one {
+		grid-template-columns: 1fr 0;
+	}
 }
 
 @media (max-width: 960px) {
@@ -42,26 +46,21 @@
 	
 	.Main__elements {
 		height: calc(100vh - 45px);
+		padding: 24px;
 	}
 }
 
 @media (max-width: 720px) {
 	.Main__grid {
-		grid-template-columns: 5fr 5fr;
+		grid-template-columns: 0 1fr;
 	}
 	
 	.Main__grid_one {
 		grid-template-columns: 1fr 0;
 	}
-}
-
-@media (max-width: 480px) {
-	.Main__grid {
-		grid-template-columns: 2fr 5fr;
-	}
 	
-	.Main__grid_one {
-		grid-template-columns: 1fr 0;
+	.Main__elements {
+		padding: 16px;
 	}
 }
 
