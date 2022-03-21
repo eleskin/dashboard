@@ -80,13 +80,13 @@
 	transform: translateY(5%);
 	transition: var(--dropdown-transition), width 0s linear 0.2s;
 	z-index: -1;
+	overflow: hidden;
 }
 
 .Accounts_active .Accounts__dropdown {
 	opacity: 1;
 	transform: translateY(0);
 	z-index: 1;
-	height: auto;
 	width: 100%;
 	transition: opacity 0.2s linear, transform 0.2s linear, z-index 0s linear 0s, width 0s linear 0s;
 }
