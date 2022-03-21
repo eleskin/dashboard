@@ -13,7 +13,7 @@
 }
 
 .Main__grid_one {
-	grid-template-columns: 1fr 0;
+	grid-template-columns: 10fr 3fr;
 }
 
 .Main__elements {
@@ -29,19 +29,11 @@
 	.Main__grid {
 		grid-template-columns: 10fr 4fr;
 	}
-	
-	.Main__grid_one {
-		grid-template-columns: 1fr 0;
-	}
 }
 
 @media (max-width: 960px) {
 	.Main__grid {
-		grid-template-columns: 10fr 5fr;
-	}
-	
-	.Main__grid_one {
-		grid-template-columns: 1fr 0;
+		grid-template-columns: 10fr 4fr;
 	}
 	
 	.Main__elements {

@@ -43,7 +43,7 @@
 .Statistic__visualisation ul li > i {
 	width: 10px;
 	height: 10px;
-	background-color: #74C02E;
+	background-color: #74c02e;
 	display: block;
 	border-radius: 50%;
 }
@@ -53,14 +53,14 @@
 	flex-direction: column;
 	font-weight: 500;
 	font-size: 14px;
-	color: #3F4B5B;
+	color: #3f4b5b;
 }
 
 .Statistic__visualisation ul li > span > i {
 	font-weight: 500;
 	font-size: 12px;
 	font-style: normal;
-	color: #AEB3BF;
+	color: #aeb3bf;
 }
 
 .Statistic__table {
@@ -109,10 +109,26 @@
 	padding-bottom: 0;
 }
 
+@media (max-width: 1170px) {
+	.Statistic {
+		grid-template-columns: calc(28% - 5px) calc(72% - 5px);
+		grid-column-gap: 10px;
+	}
+}
+
+@media (max-width: 1080px) {
+	.Statistic {
+		grid-template-columns: calc(30% - 5px) calc(70% - 5px);
+	}
+}
+
 @media (max-width: 960px) {
 	.Statistic {
 		grid-template-columns: calc(35% - 5px) calc(65% - 5px);
-		grid-column-gap: 10px;
+	}
+	
+	.Statistic__visualisation ul li > span {
+		font-size: 12px;
 	}
 }
 

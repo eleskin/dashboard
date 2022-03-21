@@ -1,6 +1,6 @@
 .Profile {
 	position: relative;
-	transform: translateX(calc(100% + 1px));
+	transform: translateX(0);
 }
 
 .Profile_active {
@@ -22,6 +22,7 @@
 	background-color: #ffffff;
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 	transition: var(--main-transition);
+	display: none;
 }
 
 .Profile__toggle:hover {
@@ -54,7 +55,7 @@
 }
 
 .Profile::-webkit-scrollbar {
-	background-color: #293245!important;
+	background-color: #293245 !important;
 }
 
 .Profile__title {
@@ -75,12 +76,12 @@
 	border-radius: 0;
 	background-color: transparent;
 	cursor: pointer;
-	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	padding: 0;
 	margin: 0;
+	display: none;
 }
 
 @media (max-width: 1170px) {
@@ -96,5 +97,24 @@
 @media (max-width: 960px) {
 	.Profile__container {
 		height: calc(100vh - 45px);
+	}
+}
+
+@media (max-width: 720px) {
+	.Profile {
+		position: relative;
+		transform: translateX(calc(100% + 1px));
+	}
+	
+	.Profile_active {
+		transform: translateX(0);
+	}
+	
+	.Profile__toggle {
+		display: inline-block;
+	}
+	
+	.Profile__title button {
+		display: flex;
 	}
 }
