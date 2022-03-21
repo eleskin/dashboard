@@ -2,7 +2,7 @@
 	background: #ffffff;
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 	height: 100%;
-	width: 112px;
+	width: 80px;
 	transition: var(--longer-transition);
 	position: absolute;
 	z-index: 2;
@@ -14,12 +14,6 @@
 
 @media (max-height: 640px) {
 	.Navbar_hover {
-		width: 112px;
-	}
-}
-
-@media (max-height: 480px) {
-	.Navbar, .Navbar_hover {
 		width: 80px;
 	}
 }
@@ -32,18 +26,22 @@
 
 @media (max-width: 960px) {
 	.Navbar_hover {
-		width: 112px;
+		width: 80px;
 	}
 }
 
 @media (max-width: 540px) {
 	.Navbar {
-		transform: translateX(-100%);
 		width: fit-content;
+		opacity: 0;
+		z-index: -1;
 	}
 	
 	.Navbar_hover {
-		transform: translateX(0);
+		/* transform: translateX(0); */
 		width: fit-content;
+		opacity: 1;
+		z-index: 3;
+		transition: opacity 0.2s linear 0s, z-index 0s linear 0s;
 	}
 }

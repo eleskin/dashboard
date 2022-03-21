@@ -39,16 +39,24 @@
 	color: #ffffff;
 }
 
-.Navigation__list li:hover a .Navigation__item i {
+.Navigation__list li:hover a .Navigation__item {
 	color: #ffffff;
 	transform: translateX(4px);
+}
+
+.Navigation__list li:hover a .Navigation__item i {
+	color: #ffffff;
 }
 
 .Navigation__list li a {
 	text-decoration: none;
 	transition: var(--longer-transition);
-	padding: 0 16px;
+	padding: 0;
 	display: block;
+}
+
+.Navigation_hover .Navigation__list li a {
+	padding: 0 16px;
 }
 
 .Navigation__list li a .Navigation__item {
