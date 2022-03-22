@@ -1,5 +1,5 @@
 import styles from './Steps.module.css';
-import React, {useCallback} from 'react';
+import React, {useCallback, MouseEvent} from 'react';
 import steps_icon_1 from '../../assets/images/steps/steps-icon-1.svg';
 import steps_icon_2 from '../../assets/images/steps/steps-icon-2.svg';
 
@@ -8,7 +8,7 @@ const Steps: Function = (): JSX.Element => {
 		<a
 			href="/"
 			className={`${styles.Steps__step} ${isCompleted ? styles.Steps__step_completed : ''}`}
-			onClick={(event: React.MouseEvent<HTMLAnchorElement>): boolean | void => isCompleted && event.preventDefault()}
+			onClick={(event: MouseEvent<HTMLAnchorElement>): boolean | void => isCompleted && event.preventDefault()}
 		>
 			<div>
 				<h5>{title}</h5>

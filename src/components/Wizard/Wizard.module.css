@@ -1,0 +1,215 @@
+.Wizard {
+	width: 100vw;
+	min-height: 100vh;
+	height: 100%;
+	position: fixed;
+	inset: 0;
+	z-index: 2;
+	background-color: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(4px);
+	transition: 0.5s linear;
+	overflow-y: scroll;
+}
+
+.Wizard__container {
+	position: fixed;
+	inset: 0;
+	z-index: 3;
+	width: 550px;
+	background-color: #ffffff;
+	margin: auto;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+	padding: 20px 0;
+	transition: 0.5s linear;
+	overflow: hidden;
+}
+
+.Wizard__slider {
+	display: flex;
+	width: 100%;
+	height: fit-content;
+	overflow: hidden;
+	transition: 0.5s linear;
+}
+
+.Wizard__container > button {
+	z-index: 2;
+	position: absolute;
+	bottom: 25px;
+	transition: 0.5s linear;
+	border: none;
+	background-color: transparent;
+	font-size: 16px;
+	color: #046fdf;
+	cursor: pointer;
+	letter-spacing: 1px;
+	display: flex;
+	align-items: center;
+	grid-column-gap: 8px;
+	font-weight: 400;
+}
+
+.Wizard__container > button svg {
+	transition: var(--main-transition);
+}
+
+.Wizard__previous {
+	left: 25px;
+}
+
+.Wizard__previous:hover svg {
+	transform: translateX(-4px);
+}
+
+.Wizard__next {
+	right: 25px;
+}
+
+.Wizard__next:hover svg {
+	transform: translateX(4px);
+}
+
+.Wizard__slide {
+	width: 100%;
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	transition: transform 0.5s cubic-bezier(1, .01, .4, .84), height 0s linear 0s;
+	overflow: hidden;
+	height: 100%;
+}
+
+.Wizard__content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 70px 50px 80px 50px;
+	background: url('../../assets/images/wizard/wizard-gradient-bg.png') bottom center no-repeat;
+	background-size: cover;
+	overflow: hidden;
+	transition: 0s linear 0.5s;
+}
+
+.Wizard__slide:not(.Wizard__slide_active) {
+	height: 0;
+	transition: transform 0.5s cubic-bezier(1, .01, .4, .84), height 0s linear 0.5s;
+}
+
+.Wizard__title {
+	color: #047bf8;
+	font-size: 24px;
+	font-weight: 400;
+	margin: 0;
+	padding: 0;
+}
+
+.Wizard__text {
+	color: rgba(69, 76, 96, 0.5);
+	font-size: 15px;
+	font-weight: 400;
+	margin: 24px 0 0 0;
+	padding: 0;
+	line-height: 24px;
+}
+
+.Wizard__form, .Wizard__lists {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 32px;
+	width: 100%;
+	margin-top: 30px;
+}
+
+.Wizard__form > label {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 100%;
+}
+
+.Wizard__form > label > span {
+	width: 100%;
+	text-align: left;
+	color: #3e4b6d;
+	font-size: 14px;
+	margin-bottom: 4px;
+}
+
+.Wizard__form > label > input, .Wizard__form > label > select {
+	width: 100%;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 21px;
+	color: #495057;
+	background-color: #ffffff;
+	border: 2px solid #dde2ec;
+	border-radius: 4px;
+	display: block;
+	padding: 6px 12px;
+	outline: none;
+	transition: var(--main-transition);
+}
+
+.Wizard__form > label > input::placeholder, .Wizard__form > label > select::placeholder {
+	opacity: 0.6;
+}
+
+.Wizard__form > label > input:focus, .Wizard__form > label > select:focus {
+	border-color: #047bf8;
+}
+
+.Wizard__list {
+	text-align: left;
+	margin: 0;
+	padding: 0 0 0 12px;
+	list-style: none;
+}
+
+.Wizard__list li {
+	margin-bottom: 10px;
+	color: #3e4b6d;
+	font-size: 14px;
+}
+
+.Wizard__content li::before {
+	content: '✓';
+	color: #047bf8;
+	font-weight: 600;
+	margin-right: 8px;
+}
+
+.Wizard__list li:last-child {
+	margin-bottom: 0;
+}
+
+.Wizard__dots {
+	display: flex;
+	grid-column-gap: 10px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+	bottom: 29px;
+	width: fit-content;
+}
+
+.Wizard__dot {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background-color: #047bf8;
+	opacity: 0.5;
+	border: none;
+	cursor: pointer;
+	transition: var(--main-transition);
+}
+
+.Wizard__dot:hover, .Wizard__dot_active {
+	opacity: 1;
+}
