@@ -23,6 +23,7 @@
 	padding: 20px 0;
 	transition: 0.5s linear;
 	overflow: hidden;
+	min-height: fit-content;
 }
 
 .Wizard__slider {
@@ -31,6 +32,7 @@
 	height: fit-content;
 	overflow: hidden;
 	transition: 0.5s linear;
+	min-height: fit-content;
 }
 
 .Wizard__container > button {
@@ -80,6 +82,7 @@
 	transition: transform 0.5s cubic-bezier(1, .01, .4, .84), height 0s linear 0s;
 	overflow: hidden;
 	height: 100%;
+	min-height: fit-content;
 }
 
 .Wizard__content {

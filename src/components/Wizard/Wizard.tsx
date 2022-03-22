@@ -1,5 +1,14 @@
 import styles from './Wizard.module.css';
-import {createRef, Dispatch, LegacyRef, RefObject, SetStateAction, useEffect, useMemo, useState} from 'react';
+import {
+	createRef,
+	Dispatch,
+	LegacyRef,
+	RefObject,
+	SetStateAction,
+	useEffect,
+	useMemo,
+	useState,
+} from 'react';
 import wizard_image_1 from '../../assets/images/wizard/wizard-image-1.png';
 import wizard_image_2 from '../../assets/images/wizard/wizard-image-2.png';
 import wizard_image_3 from '../../assets/images/wizard/wizard-image-3.png';
@@ -17,8 +26,9 @@ const Wizard: Function = (): JSX.Element => {
 	
 	const [computedHeight, setComputedHeight]: [string, Dispatch<SetStateAction<string>>] = useState('auto');
 	
-	useEffect((): void => {
+	useEffect((): typeof setTimeout | any => {
 		setComputedHeight(window.getComputedStyle(slides[activeSlide].current as Element).height);
+		return setTimeout((): void => setComputedHeight(window.getComputedStyle(slides[activeSlide].current as Element).height), 0);
 	}, [activeSlide, slides]);
 	
 	return (
