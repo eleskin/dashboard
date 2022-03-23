@@ -2,17 +2,26 @@
 	width: 100vw;
 	min-height: 100vh;
 	height: 100%;
-	position: fixed;
+	position: absolute;
 	inset: 0;
-	z-index: 2;
 	background-color: rgba(0, 0, 0, 0.5);
 	backdrop-filter: blur(4px);
-	transition: 0.5s linear;
+	transition: all 0.5s linear, z-index 0s linear 0.5s;
 	overflow-y: scroll;
+	opacity: 0;
+	z-index: -1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.Wizard_active {
+	opacity: 1;
+	z-index: 2;
 }
 
 .Wizard__container {
-	position: fixed;
 	inset: 0;
 	z-index: 3;
 	width: 550px;
@@ -21,9 +30,17 @@
 	border-radius: 8px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 	padding: 20px 0;
-	transition: 0.5s linear;
+	transition: all 0.5s linear;
 	overflow: hidden;
-	min-height: fit-content;
+	transform: translateY(100%);
+}
+
+.Wizard_active .Wizard__container {
+	transform: translateY(0);
+}
+
+.Wizard__image {
+	text-align: center;
 }
 
 .Wizard__slider {
@@ -215,4 +232,101 @@
 
 .Wizard__dot:hover, .Wizard__dot_active {
 	opacity: 1;
+}
+
+.Wizard__container .Wizard__close {
+	position: absolute;
+	top: 25px;
+	right: 25px;
+	height: fit-content;
+	padding-right: 12px;
+	color: #c26c6c;
+	letter-spacing: 1px;
+	font-size: 14px;
+}
+
+.Wizard__container .Wizard__close::before, .Wizard__container .Wizard__close::after {
+	content: '';
+	height: 12px;
+	width: 1.2px;
+	background-color: #c26c6c;
+	position: absolute;
+	right: 0;
+}
+
+.Wizard__container .Wizard__close::before {
+	transform: rotate(45deg);
+}
+
+.Wizard__container .Wizard__close::after {
+	transform: rotate(-45deg);
+}
+
+@media (max-width: 640px) {
+	.Wizard__container {
+		width: 480px;
+	}
+	
+	.Wizard__form, .Wizard__lists {
+		grid-column-gap: 16px;
+	}
+}
+
+@media (max-width: 560px) {
+	.Wizard__container {
+		width: 440px;
+	}
+	
+	.Wizard__form, .Wizard__lists {
+		grid-template-columns: 1fr;
+		grid-gap: 16px;
+	}
+	
+	.Wizard__content {
+		padding: 40px 20px 60px 20px;
+	}
+	
+	.Wizard__dot {
+		display: none;
+	}
+	
+	.Wizard__container .Wizard__close {
+		top: 20px;
+		right: 20px;
+	}
+	
+	.Wizard__container > button {
+		bottom: 20px;
+		right: 20px;
+	}
+}
+
+@media (max-width: 480px) {
+	.Wizard__container {
+		width: 380px;
+	}
+}
+
+@media (max-width: 440px) {
+	.Wizard__container {
+		width: 320px;
+	}
+}
+
+@media (max-width: 400px) {
+	.Wizard__container {
+		width: 280px;
+	}
+}
+
+@media (max-height: 800px) {
+	.Wizard__image img {
+		width: 50%;
+	}
+}
+
+@media (max-height: 720px) {
+	.Wizard__image img {
+		display: none;
+	}
 }
