@@ -6,7 +6,7 @@
 	inset: 0;
 	background-color: rgba(0, 0, 0, 0.5);
 	backdrop-filter: blur(4px);
-	transition: all 0.5s linear, z-index 0s linear 0.5s;
+	transition: all 0.4s linear, opacity 0.2s linear, z-index 0s linear 0.2s;
 	overflow-y: scroll;
 	opacity: 0;
 	z-index: -1;
@@ -30,13 +30,13 @@
 	border-radius: 8px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 	padding: 20px 0;
-	transition: all 0.5s linear;
+	transition: all 0.4s linear, transform 0.2s linear;
 	overflow: hidden;
-	transform: translateY(100%);
+	transform: translateY(100%) scale(0.7);
 }
 
 .Wizard_active .Wizard__container {
-	transform: translateY(0);
+	transform: translateY(0) scale(1);
 }
 
 .Wizard__image {
@@ -48,7 +48,7 @@
 	width: 100%;
 	height: fit-content;
 	overflow: hidden;
-	transition: 0.5s linear;
+	transition: 0.4s linear;
 	min-height: fit-content;
 }
 
@@ -56,7 +56,7 @@
 	z-index: 2;
 	position: absolute;
 	bottom: 25px;
-	transition: 0.5s linear;
+	transition: 0.4s linear;
 	border: none;
 	background-color: transparent;
 	font-size: 16px;
@@ -96,7 +96,7 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	transition: transform 0.5s cubic-bezier(1, .01, .4, .84), height 0s linear 0s;
+	transition: transform 0.4s cubic-bezier(1, .01, .4, .84), height 0s linear 0s;
 	overflow: hidden;
 	height: 100%;
 	min-height: fit-content;
@@ -112,12 +112,27 @@
 	background: url('../../assets/images/wizard/wizard-gradient-bg.png') bottom center no-repeat;
 	background-size: cover;
 	overflow: hidden;
-	transition: 0s linear 0.5s;
+	transition: 0s linear 0.4s;
 }
 
 .Wizard__slide:not(.Wizard__slide_active) {
 	height: 0;
-	transition: transform 0.5s cubic-bezier(1, .01, .4, .84), height 0s linear 0.5s;
+	transition: transform 0.4s cubic-bezier(1, .01, .4, .84), height 0s linear 0.4s;
+}
+
+.Wizard__image img {
+	animation-name: imgAnimation;
+	animation-duration: 0.5s;
+}
+
+@keyframes imgAnimation {
+	from {
+		transform: scale(0.7) translateY(20%);
+	}
+	
+	to {
+		transform: scale(1) translateY(0);
+	}
 }
 
 .Wizard__title {
@@ -126,6 +141,18 @@
 	font-weight: 400;
 	margin: 0;
 	padding: 0;
+	animation-name: titleAnimation;
+	animation-duration: 0.5s;
+}
+
+@keyframes titleAnimation {
+	from {
+		transform: scale(0.7) translateY(100%);
+	}
+	
+	to {
+		transform: scale(1) translateY(0);
+	}
 }
 
 .Wizard__text {
@@ -135,6 +162,18 @@
 	margin: 24px 0 0 0;
 	padding: 0;
 	line-height: 24px;
+	animation-name: textAnimation;
+	animation-duration: 0.5s;
+}
+
+@keyframes textAnimation {
+	from {
+		transform: scale(0.7) translateY(100%);
+	}
+	
+	to {
+		transform: scale(1) translateY(0);
+	}
 }
 
 .Wizard__form, .Wizard__lists {
