@@ -33,6 +33,7 @@
 	transition: all 0.4s linear, transform 0.2s linear;
 	overflow: hidden;
 	transform: translateY(100%) scale(0.7);
+	height: fit-content;
 }
 
 .Wizard_active .Wizard__container {

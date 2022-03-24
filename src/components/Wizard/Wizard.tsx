@@ -26,12 +26,17 @@ const Wizard: Function = ({
 	const thirdSlide: LegacyRef<HTMLDivElement> | undefined = createRef();
 	
 	const slides: RefObject<HTMLDivElement>[] = useMemo((): RefObject<HTMLDivElement>[] => [firstSlide, secondSlide, thirdSlide], [firstSlide, secondSlide, thirdSlide]);
+	const images: Array<string> = useMemo((): Array<string> => [wizard_image_1, wizard_image_2, wizard_image_3], []);
 	
-	const [computedHeight, setComputedHeight]: [string, Dispatch<SetStateAction<string>>] = useState('auto');
+	const [computedHeight, setComputedHeight]: [string, Dispatch<SetStateAction<string>>] = useState('fit-content');
 	
 	useEffect((): void => {
-		setTimeout((): void => setComputedHeight(window.getComputedStyle(slides[activeSlide].current as Element).height), 0);
-	}, [activeSlide, slides]);
+		const image: HTMLImageElement = new Image();
+		image.src = images[activeSlide];
+		image.addEventListener('load', (): void => {
+			setComputedHeight(window.getComputedStyle(slides[activeSlide].current as Element).height);
+		});
+	}, [activeSlide, images, slides]);
 	
 	return (
 		<div className={`${styles.Wizard} ${isVisibleWizard ? styles.Wizard_active : ''}`}>
@@ -114,7 +119,8 @@ const Wizard: Function = ({
 									Showcase App Features
 								</h4>
 								<p className={styles.Wizard__text}>
-									In this example you can showcase some of the features of your application, it is very handy to make new
+									In this example you can showcase some of the features of your application, it is very handy to make
+									new
 									users aware of your hidden features. You can use boostrap columns to split them up.
 								</p>
 								<div className={styles.Wizard__lists}>
@@ -146,7 +152,7 @@ const Wizard: Function = ({
 					</div>
 					{activeSlide > 0 && (
 						<button
-							onClick={(): void => setActiveSlide(activeSlide - 1)}
+							onClick={() => setActiveSlide(activeSlide - 1)}
 							className={styles.Wizard__previous}
 						>
 							<FontAwesomeIcon icon={faArrowLeft}/>
@@ -164,7 +170,7 @@ const Wizard: Function = ({
 					</div>
 					{activeSlide < slides.length - 1 && (
 						<button
-							onClick={(): void => setActiveSlide(activeSlide + 1)}
+							onClick={() => setActiveSlide(activeSlide + 1)}
 							className={styles.Wizard__next}
 						>
 							<span>Next</span>
