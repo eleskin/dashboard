@@ -1,5 +1,6 @@
 import styles from './App.module.css';
 import {Dispatch, SetStateAction, useState} from 'react';
+import {Routes, Route} from 'react-router-dom';
 import Main from './components/Main/Main';
 import Navbar from './components/Navbar/Navbar';
 import Wizard from './components/Wizard/Wizard';
@@ -11,7 +12,9 @@ const App: Function = (): JSX.Element => {
 	return (
 		<div className={styles.App}>
 			<Navbar isHovering={isHovering} setIsHovering={setIsHovering}/>
-			<Main setIsHovering={setIsHovering}/>
+			<Routes>
+				<Route path="/" element={<Main setIsHovering={setIsHovering}/>}/>
+			</Routes>
 			<Wizard isVisibleWizard={isVisibleWizard} setIsVisibleWizard={setIsVisibleWizard}/>
 		</div>
 	);

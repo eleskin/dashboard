@@ -1,12 +1,13 @@
 import styles from './Steps.module.css';
 import React, {useCallback, MouseEvent} from 'react';
+import {Link} from 'react-router-dom';
 import steps_icon_1 from '../../assets/images/steps/steps-icon-1.svg';
 import steps_icon_2 from '../../assets/images/steps/steps-icon-2.svg';
 
 const Steps: Function = (): JSX.Element => {
 	const step: Function = useCallback((title: string, subtitle: string, isCompleted: boolean): JSX.Element => (
-		<a
-			href="/"
+		<Link
+			to="/"
 			className={`${styles.Steps__step} ${isCompleted ? styles.Steps__step_completed : ''}`}
 			onClick={(event: MouseEvent<HTMLAnchorElement>): boolean | void => isCompleted && event.preventDefault()}
 		>
@@ -15,7 +16,7 @@ const Steps: Function = (): JSX.Element => {
 				<span>{subtitle}</span>
 			</div>
 			<span>{isCompleted ? <img src={steps_icon_1} alt=""/> : <img src={steps_icon_2} alt=""/>}</span>
-		</a>
+		</Link>
 	), []);
 	
 	return (

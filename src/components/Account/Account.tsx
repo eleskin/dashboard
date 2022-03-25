@@ -1,5 +1,6 @@
 import styles from './Account.module.css';
 import {Dispatch, MouseEventHandler, SetStateAction, useMemo, useState} from 'react';
+import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEnvelope, faUser, faMoneyBill1, faBell} from '@fortawesome/free-regular-svg-icons';
 import {faArrowRightFromBracket, faChevronDown} from '@fortawesome/free-solid-svg-icons';
@@ -34,11 +35,11 @@ const Account: Function = ({isHovering}: { isHovering: boolean }): JSX.Element =
 			<div className={styles.Account__dropdown} onMouseLeave={handleMouseLeave}>
 				{AccountWebsite}
 				<ul className={styles.Account__menu}>
-					<li><a href="/"><FontAwesomeIcon icon={faEnvelope}/> Incoming Mail</a></li>
-					<li><a href="/"><FontAwesomeIcon icon={faUser}/> Profile Details</a></li>
-					<li><a href="/"><FontAwesomeIcon icon={faMoneyBill1}/> Billing Details</a></li>
-					<li><a href="/"><FontAwesomeIcon icon={faBell}/> Notifications</a></li>
-					<li><a href="/"><FontAwesomeIcon icon={faArrowRightFromBracket}/> Logout</a></li>
+					<li><Link to="/"><FontAwesomeIcon icon={faEnvelope}/> Incoming Mail</Link></li>
+					<li><Link to="/"><FontAwesomeIcon icon={faUser}/> Profile Details</Link></li>
+					<li><Link to="/"><FontAwesomeIcon icon={faMoneyBill1}/> Billing Details</Link></li>
+					<li><Link to="/"><FontAwesomeIcon icon={faBell}/> Notifications</Link></li>
+					<li><Link to="/"><FontAwesomeIcon icon={faArrowRightFromBracket}/> Logout</Link></li>
 				</ul>
 			</div>
 		</div>
