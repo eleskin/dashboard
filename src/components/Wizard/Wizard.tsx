@@ -39,6 +39,7 @@ const Wizard: Function = ({
 	const wizardSwipeHandlers: SwipeableHandlers = useSwipeable({
 		onSwipedLeft: (): void => setActiveSlide(activeSlide + 1),
 		onSwipedRight: (): void => setActiveSlide(activeSlide - 1),
+		trackMouse: true,
 	});
 	
 	useEffect((): void => {
