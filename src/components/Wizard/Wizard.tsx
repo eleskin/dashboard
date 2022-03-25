@@ -1,3 +1,4 @@
+import {SwipeableHandlers, useSwipeable} from 'react-swipeable';
 import {useOutsideClickHandler} from '../../utils/hooks';
 import styles from './Wizard.module.css';
 import {
@@ -35,6 +36,11 @@ const Wizard: Function = ({
 	
 	useOutsideClickHandler(wizardElement, isVisibleWizard, setIsVisibleWizard);
 	
+	const wizardSwipeHandlers: SwipeableHandlers = useSwipeable({
+		onSwipedLeft: (): void => setActiveSlide(activeSlide + 1),
+		onSwipedRight: (): void => setActiveSlide(activeSlide - 1),
+	});
+	
 	useEffect((): void => {
 		const image: HTMLImageElement = new Image();
 		image.src = images[activeSlide];
@@ -53,7 +59,7 @@ const Wizard: Function = ({
 					}}
 				>
 					<button className={styles.Wizard__close} onClick={() => setIsVisibleWizard(false)}>Close</button>
-					<div className={styles.Wizard__slider}>
+					<div className={styles.Wizard__slider} {...wizardSwipeHandlers}>
 						<div
 							className={`${styles.Wizard__slide} ${activeSlide === 0 ? styles.Wizard__slide_active : ''}`}
 							style={{transform: `translateX(${-100 * activeSlide}%)`}}

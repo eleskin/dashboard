@@ -34,6 +34,7 @@
 	overflow: hidden;
 	transform: translateY(100%) scale(0.7);
 	height: fit-content;
+	user-select: none;
 }
 
 .Wizard_active .Wizard__container {
