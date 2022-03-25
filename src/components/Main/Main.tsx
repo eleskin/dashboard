@@ -1,5 +1,5 @@
 import styles from './Main.module.css';
-import {Dispatch, SetStateAction, useState} from 'react';
+import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import Header from '../Header/Header';
 import Profile from '../Profile/Profile';
 import Metrics from '../Metrics/Metrics';
@@ -8,6 +8,17 @@ import Statistic from '../Statistic/Statistic';
 
 const Main: Function = ({setIsHovering}: { setIsHovering: Dispatch<SetStateAction<boolean>> }): JSX.Element => {
 	const [isActiveProfile, setIsActiveProfile]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(Boolean(true));
+	
+	useEffect((): () => void => {
+		const handleResize: EventListener = (event: Event | any): void => {
+			if (event.target.innerWidth <= 720 && isActiveProfile) {
+				setIsActiveProfile(false);
+			}
+		};
+		
+		window.addEventListener('resize', handleResize);
+		return (): void => window.removeEventListener('resize', handleResize);
+	}, [isActiveProfile]);
 	
 	return (
 		<main className={styles.Main}>
