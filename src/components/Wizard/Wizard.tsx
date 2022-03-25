@@ -1,3 +1,4 @@
+import {useOutsideClickHandler} from '../../utils/hooks';
 import styles from './Wizard.module.css';
 import {
 	createRef,
@@ -30,6 +31,10 @@ const Wizard: Function = ({
 	
 	const [computedHeight, setComputedHeight]: [string, Dispatch<SetStateAction<string>>] = useState('fit-content');
 	
+	const wizardElement: LegacyRef<HTMLDivElement> | undefined = createRef();
+	
+	useOutsideClickHandler(wizardElement, isVisibleWizard, setIsVisibleWizard);
+	
 	useEffect((): void => {
 		const image: HTMLImageElement = new Image();
 		image.src = images[activeSlide];
@@ -40,7 +45,7 @@ const Wizard: Function = ({
 	
 	return (
 		<div className={`${styles.Wizard} ${isVisibleWizard ? styles.Wizard_active : ''}`}>
-			<div className={styles.Wizard__wrapper}>
+			<div className={styles.Wizard__wrapper} ref={wizardElement}>
 				<div
 					className={styles.Wizard__container}
 					style={{

@@ -8,14 +8,14 @@ export const useGetFaviconURL: Function = (websiteURL: string): [string, Dispatc
 
 export const useOutsideClickHandler: Function = (
 	ref: { current: { contains: (arg0: Node) => Element; }; },
-	isActiveDropdown: boolean,
-	setIsActiveDropdown: Dispatch<SetStateAction<boolean>>,
+	isActive: boolean,
+	setIsActive: Dispatch<SetStateAction<boolean>>,
 ): void => {
 	return useEffect((): () => void => {
 		const onClick: (event: Event) => void = (event: Event): void => {
-			if (ref) ref.current?.contains(event.target as Node) || (isActiveDropdown && setIsActiveDropdown(false));
+			if (ref) ref.current?.contains(event.target as Node) || (isActive && setIsActive(false));
 		};
 		document.addEventListener('click', onClick);
 		return (): void => document.removeEventListener('click', onClick);
-	}, [ref, isActiveDropdown, setIsActiveDropdown]);
+	}, [ref, isActive, setIsActive]);
 };
