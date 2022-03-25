@@ -1,5 +1,4 @@
 import {SwipeableHandlers, useSwipeable} from 'react-swipeable';
-import {useOutsideClickHandler} from '../../utils/hooks';
 import styles from './Wizard.module.css';
 import {
 	createRef,
@@ -32,10 +31,6 @@ const Wizard: Function = ({
 	
 	const [computedHeight, setComputedHeight]: [string, Dispatch<SetStateAction<string>>] = useState('fit-content');
 	
-	const wizardElement: LegacyRef<HTMLDivElement> | undefined = createRef();
-	
-	useOutsideClickHandler(wizardElement, isVisibleWizard, setIsVisibleWizard);
-	
 	const wizardSwipeHandlers: SwipeableHandlers = useSwipeable({
 		onSwipedLeft: (): void => setActiveSlide(activeSlide + 1),
 		onSwipedRight: (): void => setActiveSlide(activeSlide - 1),
@@ -52,14 +47,15 @@ const Wizard: Function = ({
 	
 	return (
 		<div className={`${styles.Wizard} ${isVisibleWizard ? styles.Wizard_active : ''}`}>
-			<div className={styles.Wizard__wrapper} ref={wizardElement}>
+			<div className={styles.Wizard__overlay} onClick={(): void => setIsVisibleWizard(false)}/>
+			<div className={styles.Wizard__wrapper}>
 				<div
 					className={styles.Wizard__container}
 					style={{
 						height: `${parseFloat(computedHeight) + 40}px`,
 					}}
 				>
-					<button className={styles.Wizard__close} onClick={() => setIsVisibleWizard(false)}>Close</button>
+					<button className={styles.Wizard__close} onClick={(): void => setIsVisibleWizard(false)}>Close</button>
 					<div className={styles.Wizard__slider} {...wizardSwipeHandlers}>
 						<div
 							className={`${styles.Wizard__slide} ${activeSlide === 0 ? styles.Wizard__slide_active : ''}`}
@@ -164,7 +160,7 @@ const Wizard: Function = ({
 					</div>
 					{activeSlide > 0 && (
 						<button
-							onClick={() => setActiveSlide(activeSlide - 1)}
+							onClick={(): void => setActiveSlide(activeSlide - 1)}
 							className={styles.Wizard__previous}
 						>
 							<FontAwesomeIcon icon={faArrowLeft}/>
@@ -182,7 +178,7 @@ const Wizard: Function = ({
 					</div>
 					{activeSlide < slides.length - 1 && (
 						<button
-							onClick={() => setActiveSlide(activeSlide + 1)}
+							onClick={(): void => setActiveSlide(activeSlide + 1)}
 							className={styles.Wizard__next}
 						>
 							<span>Next</span>
