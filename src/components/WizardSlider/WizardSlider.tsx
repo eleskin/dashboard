@@ -63,24 +63,10 @@ const WizardSlider: Function = ({
 						In this example you can see a form where you can request some additional information from the customer
 						when they land on the app page.
 					</p>
-					<form className={styles.Wizard__form}>
+					<form className={`${styles.Wizard__form} ${styles.Wizard__form_one}`}>
 						<label>
-							<span>Your Full Name</span>
-							<input type="text" placeholder="Enter your full name..."/>
-						</label>
-						<label>
-							<span>Your Role</span>
-							<select>
-								<option>
-									Web Developer
-								</option>
-								<option>
-									Business Owner
-								</option>
-								<option>
-									Other
-								</option>
-							</select>
+							<span>Website address</span>
+							<input type="text" placeholder="Enter website address"/>
 						</label>
 					</form>
 				</div>

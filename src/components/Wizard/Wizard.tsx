@@ -41,7 +41,6 @@ const Wizard: Function = ({
 	
 	return (
 		<div className={`${styles.Wizard} ${isVisibleWizard ? styles.Wizard_active : ''}`}>
-			<div className={styles.Wizard__overlay} onClick={(): void => setIsVisibleWizard(false)}/>
 			<div className={styles.Wizard__wrapper}>
 				<div
 					className={styles.Wizard__container}
@@ -49,7 +48,6 @@ const Wizard: Function = ({
 						height: `${parseFloat(computedHeight) + 40}px`,
 					}}
 				>
-					<button className={styles.Wizard__close} onClick={(): void => setIsVisibleWizard(false)}>Close</button>
 					<WizardSlider
 						activeSlide={activeSlide}
 						setIsVisibleWizard={setIsVisibleWizard}
@@ -82,6 +80,13 @@ const Wizard: Function = ({
 						>
 							<span>Next</span>
 							<FontAwesomeIcon icon={faArrowRight}/>
+						</button>
+					)}
+					{activeSlide === slides.length - 1 && (
+						<button
+							className={styles.Wizard__create}
+						>
+							<span>Go to work</span>
 						</button>
 					)}
 				</div>
