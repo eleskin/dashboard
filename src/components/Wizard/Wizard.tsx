@@ -1,4 +1,3 @@
-import WizardSlider from '../WizardSlider/WizardSlider';
 import styles from './Wizard.module.css';
 import {
 	createRef,
@@ -10,6 +9,7 @@ import {
 	useMemo,
 	useState,
 } from 'react';
+import WizardSlider from '../WizardSlider/WizardSlider';
 import wizard_image_1 from '../../assets/images/wizard/wizard-image-1.png';
 import wizard_image_2 from '../../assets/images/wizard/wizard-image-2.png';
 import wizard_image_3 from '../../assets/images/wizard/wizard-image-3.png';
