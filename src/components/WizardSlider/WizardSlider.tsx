@@ -1,6 +1,6 @@
+import styles from '../Wizard/Wizard.module.css';
 import {Dispatch, LegacyRef, SetStateAction} from 'react';
 import {SwipeableHandlers, useSwipeable} from 'react-swipeable';
-import styles from '../Wizard/Wizard.module.css';
 import wizard_image_1 from '../../assets/images/wizard/wizard-image-1.png';
 import wizard_image_2 from '../../assets/images/wizard/wizard-image-2.png';
 import wizard_image_3 from '../../assets/images/wizard/wizard-image-3.png';
