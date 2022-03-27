@@ -19,9 +19,6 @@
 .Main__elements {
 	padding: 32px;
 	overflow-y: scroll;
-	display: flex;
-	flex-direction: column;
-	grid-row-gap: 30px;
 	height: calc(100vh - 64.4px);
 }
 
