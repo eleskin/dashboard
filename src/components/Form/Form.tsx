@@ -1,6 +1,6 @@
 import styles from './Form.module.css';
 
-const Input: Function = ({label}: {label: string}, props: object): JSX.Element => {
+const Input: Function = ({label, ...props}: { label: string }): JSX.Element => {
 	return (
 		<label className={styles.Input}>
 			{label && <span>{label}</span>}
@@ -9,7 +9,7 @@ const Input: Function = ({label}: {label: string}, props: object): JSX.Element =
 	);
 };
 
-const Select: Function = ({label, options}: {label: string, options: Array<string>}, props: object): JSX.Element => {
+const Select: Function = ({label, options, ...props}: { label: string, options: Array<string> }): JSX.Element => {
 	const optionsList: Array<JSX.Element> = options.map((option: string, index: number) => (
 		<option value={option} key={index}>
 			{option}
@@ -24,9 +24,13 @@ const Select: Function = ({label, options}: {label: string, options: Array<strin
 	);
 };
 
-const Form: { Input: Function, Select: Function } = {
-	Input: Input,
-	Select: Select,
+const Form: Function & { Input: Function, Select: Function } = ({children}: { children: JSX.Element }): JSX.Element => {
+	return (
+		<div className={styles.Form}>{children}</div>
+	);
 };
+
+Form.Input = Input;
+Form.Select = Select;
 
 export default Form;

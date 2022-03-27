@@ -66,7 +66,7 @@ const WizardSlider: Function = ({
 						In this example you can see a form where you can request some additional information from the customer
 						when they land on the app page.
 					</p>
-					<div className={styles.WizardSlider__form}>
+					<Form>
 						<Form.Input
 							label="Your Full Name"
 							type="text"
@@ -78,7 +78,7 @@ const WizardSlider: Function = ({
 							label="Your Role"
 							options={['Web Developer', 'Business Owner', 'Other']}
 						/>
-					</div>
+					</Form>
 				</div>
 			</div>
 			<div

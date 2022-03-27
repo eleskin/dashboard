@@ -29,7 +29,7 @@ const App: Function = (): JSX.Element => {
 				
 				<Route path="/login" element={
 					<PublicRoute isAuth={isAuth}>
-						
+					
 					</PublicRoute>
 				}/>
 				<Route path="*" element={<NullRoute isAuth={isAuth}/>}/>
