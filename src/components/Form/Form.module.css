@@ -1,0 +1,38 @@
+.Input > input, .Select > select {
+	width: 100%;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 21px;
+	color: #495057;
+	background-color: #ffffff;
+	border: 2px solid #dde2ec;
+	border-radius: 4px;
+	display: block;
+	padding: 6px 12px;
+	outline: none;
+	transition: var(--main-transition);
+}
+
+.Input > input::placeholder, .Select > select::placeholder {
+	opacity: 0.6;
+}
+
+.Input > input:focus, .Select > select:focus {
+	border-color: #047bf8;
+}
+
+.Input, .Select {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 100%;
+}
+
+.Input span, .Select span {
+	width: 100%;
+	text-align: left;
+	color: #3e4b6d;
+	font-size: 14px;
+	margin-bottom: 4px;
+}

@@ -82,45 +82,6 @@
 	margin-top: 30px;
 }
 
-.WizardSlider__form > label {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: flex-start;
-	width: 100%;
-}
-
-.WizardSlider__form > label > span {
-	width: 100%;
-	text-align: left;
-	color: #3e4b6d;
-	font-size: 14px;
-	margin-bottom: 4px;
-}
-
-.WizardSlider__form > label > input, .WizardSlider__form > label > select {
-	width: 100%;
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 21px;
-	color: #495057;
-	background-color: #ffffff;
-	border: 2px solid #dde2ec;
-	border-radius: 4px;
-	display: block;
-	padding: 6px 12px;
-	outline: none;
-	transition: var(--main-transition);
-}
-
-.WizardSlider__form > label > input::placeholder, .WizardSlider__form > label > select::placeholder {
-	opacity: 0.6;
-}
-
-.WizardSlider__form > label > input:focus, .WizardSlider__form > label > select:focus {
-	border-color: #047bf8;
-}
-
 @keyframes titleAnimation {
 	from {
 		transform: scale(0.7) translateY(100%);

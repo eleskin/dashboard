@@ -1,5 +1,6 @@
+import Form from '../Form/Form';
 import styles from './WizardSlider.module.css';
-import {Dispatch, LegacyRef, SetStateAction} from 'react';
+import {Dispatch, LegacyRef, SetStateAction, useState} from 'react';
 import {SwipeableHandlers, useSwipeable} from 'react-swipeable';
 import wizard_image_1 from '../../assets/images/wizard/wizard-image-1.png';
 import wizard_image_2 from '../../assets/images/wizard/wizard-image-2.png';
@@ -25,6 +26,8 @@ const WizardSlider: Function = ({
 		onSwipedRight: (): void => setActiveSlide(activeSlide - 1),
 		trackMouse: true,
 	});
+	
+	const [fullName, setFullName] = useState('');
 	
 	return (
 		<div className={styles.WizardSlider} {...wizardSwipeHandlers}>
@@ -63,26 +66,19 @@ const WizardSlider: Function = ({
 						In this example you can see a form where you can request some additional information from the customer
 						when they land on the app page.
 					</p>
-					<form className={styles.WizardSlider__form}>
-						<label>
-							<span>Your Full Name</span>
-							<input type="text" placeholder="Enter your full name..."/>
-						</label>
-						<label>
-							<span>Your Role</span>
-							<select>
-								<option>
-									Web Developer
-								</option>
-								<option>
-									Business Owner
-								</option>
-								<option>
-									Other
-								</option>
-							</select>
-						</label>
-					</form>
+					<div className={styles.WizardSlider__form}>
+						<Form.Input
+							label="Your Full Name"
+							type="text"
+							placeholder="Enter your Full Name"
+							value={fullName}
+							onInput={(event: InputEvent | any): void => setFullName(event.target.value)}
+						/>
+						<Form.Select
+							label="Your Role"
+							options={['Web Developer', 'Business Owner', 'Other']}
+						/>
+					</div>
 				</div>
 			</div>
 			<div

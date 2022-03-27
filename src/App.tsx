@@ -6,6 +6,7 @@ import Navbar from './components/Navbar/Navbar';
 import Wizard from './components/Wizard/Wizard';
 import NullRoute from './router/NullRoute/NullRoute';
 import PrivateRoute from './router/PrivateRoute/PrivateRoute';
+import PublicRoute from './router/PublicRoute/PublicRoute';
 import Home from './views/Home/Home';
 
 const App: Function = (): JSX.Element => {
@@ -25,8 +26,12 @@ const App: Function = (): JSX.Element => {
 						</Main>
 					</PrivateRoute>
 				}/>
-				{/*<Route path="/login" element={*/}
-				{/*}/>*/}
+				
+				<Route path="/login" element={
+					<PublicRoute isAuth={isAuth}>
+						
+					</PublicRoute>
+				}/>
 				<Route path="*" element={<NullRoute isAuth={isAuth}/>}/>
 			</Routes>
 			<Wizard isVisibleWizard={isVisibleWizard} setIsVisibleWizard={setIsVisibleWizard}/>
