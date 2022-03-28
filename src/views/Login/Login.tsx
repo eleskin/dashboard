@@ -1,46 +1,36 @@
-import {Dispatch, FormEvent, FormEventHandler, SetStateAction, useState} from 'react';
 import styles from './Login.module.css';
+import {Dispatch, FormEvent, FormEventHandler, SetStateAction, useState} from 'react';
+import {getValidURL} from '../../utils/functions';
 import Form from '../../components/Form/Form';
+import {useDispatch} from 'react-redux';
+import {loaded, loading, login} from '../../store/slices/user';
 
 const Login: Function = (): JSX.Element => {
 	const [websiteURL, setWebsiteURL]: [string, Dispatch<SetStateAction<string>>] = useState('');
+	const [errorURL, setErrorURL]: [string, Dispatch<SetStateAction<string>>] = useState('');
+	const dispatch = useDispatch();
 	
-	const isURL: Function = (string: string): boolean => {
-		const pattern: RegExp = new RegExp('^(https?:\\/\\/)?' + // protocol
-			'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + // domain name
-			'((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-			'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-			'(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-			'(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
-		return pattern.test(string);
-	};
-	
-	const normalizeURL: Function = (url: string): string => {
-		let currentURL: string = url;
-		if (url.search('http://') === -1 || url.search('https://') === -1) {
-			currentURL = `https://${url}`;
-		}
-		
-		return currentURL;
-	};
-	
-	const getValidURL: Function = (url: string) => {
-		if (isURL(url)) {
-			try {
-				const websiteURL: URL = new URL(normalizeURL(url));
-				return websiteURL;
-			} catch (error: Error | any) {
-				throw new Error(error);
-			}
-		} else {
-			throw new Error('Error');
-		}
+	const handleInputChange: Function = (event: InputEvent | any): void => {
+		setWebsiteURL(event.target.value);
+		setErrorURL('');
 	};
 	
 	const handleFormSubmit: FormEventHandler = (event: FormEvent): void => {
 		event.preventDefault();
 		
-		localStorage.setItem('current_website', getValidURL(websiteURL).toString());
+		try {
+			localStorage.setItem('current_website', getValidURL(websiteURL).toString());
+			dispatch(loading(undefined));
+			setTimeout((): void => {
+				dispatch(loaded(undefined));
+			}, 2000);
+			
+			setTimeout((): void => {
+				dispatch(login(undefined));
+			}, 1000);
+		} catch {
+			setErrorURL('Incorrect URL');
+		}
 	};
 	
 	return (
@@ -53,9 +43,9 @@ const Login: Function = (): JSX.Element => {
 							type="text"
 							label="Website Address"
 							placeholder="Enter Website Address"
-							required={true}
+							error={errorURL}
 							value={websiteURL}
-							onInput={(event: InputEvent | any): void => setWebsiteURL(event.target.value)}
+							onInput={handleInputChange}
 						/>
 					</Form.Row>
 					<Form.Row>

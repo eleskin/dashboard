@@ -6,11 +6,12 @@ const Row: Function = ({children, ...props}: { children: JSX.Element }): JSX.Ele
 	);
 };
 
-const Input: Function = ({label, ...props}: { label: string }): JSX.Element => {
+const Input: Function = ({label, error, ...props}: { label: string, error: string }): JSX.Element => {
 	return (
-		<label className={styles.Form__input}>
+		<label className={`${styles.Form__input} ${error ? styles.Form__input_incorrect : ''}`}>
 			{label && <span>{label}</span>}
 			<input {...props}/>
+			<i>{error}</i>
 		</label>
 	);
 };

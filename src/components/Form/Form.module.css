@@ -43,6 +43,17 @@
 	border-color: #047bf8;
 }
 
+.Form__input_incorrect > input {
+	border-color: #e45456;
+	color: #e45456;
+	background-color: rgba(228, 84, 86, 0.05);
+}
+
+.Form__input_incorrect > input:focus {
+	color: #495057;
+	background-color: #ffffff;
+}
+
 .Form__input, .Form__select {
 	display: flex;
 	flex-direction: column;
@@ -56,7 +67,23 @@
 	text-align: left;
 	color: #3e4b6d;
 	font-size: 14px;
-	margin-bottom: 4px;
+	margin-bottom: 6px;
+}
+
+.Form__input > i {
+	transition: var(--longer-transition);
+	opacity: 0;
+	height: 0;
+	font-style: normal;
+	font-size: 12px;
+	margin-top: 2px;
+	color: #e45456;
+	line-height: 15px;
+}
+
+.Form__input_incorrect > i {
+	opacity: 1;
+	height: 15px;
 }
 
 .Form__button {
