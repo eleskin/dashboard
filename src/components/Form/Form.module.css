@@ -1,12 +1,26 @@
 .Form {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-column-gap: 32px;
+	grid-row-gap: 16px;
 	width: 100%;
+}
+
+.FormHeader h2 {
+	padding: 0;
+	margin: 0;
+	font-size: 24px;
+	font-weight: 400;
+}
+
+.Form__row:first-of-type {
 	margin-top: 30px;
 }
 
-.Input > input, .Select > select {
+.Form__row {
+	display: flex;
+	grid-column-gap: 32px;
+}
+
+.Form__input > input, .Form__select > select {
 	width: 100%;
 	font-size: 14px;
 	font-weight: 400;
@@ -21,15 +35,15 @@
 	transition: var(--main-transition);
 }
 
-.Input > input::placeholder, .Select > select::placeholder {
+.Form__input > input::placeholder, .Form__select > select::placeholder {
 	opacity: 0.6;
 }
 
-.Input > input:focus, .Select > select:focus {
+.Form__input > input:focus, .Form__select > select:focus {
 	border-color: #047bf8;
 }
 
-.Input, .Select {
+.Form__input, .Form__select {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -37,7 +51,7 @@
 	width: 100%;
 }
 
-.Input span, .Select span {
+.Form__input span, .Form__select span {
 	width: 100%;
 	text-align: left;
 	color: #3e4b6d;
@@ -45,14 +59,31 @@
 	margin-bottom: 4px;
 }
 
+.Form__button {
+	margin: 0 0 0 auto;
+	color: #ffffff;
+	background-color: #047bf8;
+	border: none;
+	cursor: pointer;
+	padding: 6px 12px;
+	font-size: 14px;
+	border-radius: 4px;
+	transition: var(--main-transition);
+}
+
+.Form__button:hover {
+	background-color: #0368d2;
+}
+
 @media (max-width: 640px) {
-	.Form {
+	.Form__row {
 		grid-column-gap: 16px;
 	}
 }
 
 @media (max-width: 560px) {
-	.Form {
+	.Form__row {
+		display: grid;
 		grid-template-columns: 1fr;
 		grid-gap: 16px;
 	}

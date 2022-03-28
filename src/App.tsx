@@ -8,16 +8,17 @@ import NullRoute from './router/NullRoute/NullRoute';
 import PrivateRoute from './router/PrivateRoute/PrivateRoute';
 import PublicRoute from './router/PublicRoute/PublicRoute';
 import Home from './views/Home/Home';
+import Login from './views/Login/Login';
 
 const App: Function = (): JSX.Element => {
 	const [isHovering, setIsHovering]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(Boolean(false));
 	const [isVisibleWizard, setIsVisibleWizard]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(Boolean(true));
 	
-	const isAuth = true;
+	const isAuth = false;
 	
 	return (
 		<div className={styles.App}>
-			<Navbar isHovering={isHovering} setIsHovering={setIsHovering}/>
+			{isAuth && <Navbar isHovering={isHovering} setIsHovering={setIsHovering}/>}
 			<Routes>
 				<Route path="/home" element={
 					<PrivateRoute isAuth={isAuth}>
@@ -29,12 +30,12 @@ const App: Function = (): JSX.Element => {
 				
 				<Route path="/login" element={
 					<PublicRoute isAuth={isAuth}>
-					
+						<Login/>
 					</PublicRoute>
 				}/>
 				<Route path="*" element={<NullRoute isAuth={isAuth}/>}/>
 			</Routes>
-			<Wizard isVisibleWizard={isVisibleWizard} setIsVisibleWizard={setIsVisibleWizard}/>
+			{isAuth && <Wizard isVisibleWizard={isVisibleWizard} setIsVisibleWizard={setIsVisibleWizard}/>}
 		</div>
 	);
 };

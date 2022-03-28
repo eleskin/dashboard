@@ -1,8 +1,14 @@
 import styles from './Form.module.css';
 
+const Row: Function = ({children, ...props}: { children: JSX.Element }): JSX.Element => {
+	return (
+		<div {...props} className={styles.Form__row}>{children}</div>
+	);
+};
+
 const Input: Function = ({label, ...props}: { label: string }): JSX.Element => {
 	return (
-		<label className={styles.Input}>
+		<label className={styles.Form__input}>
 			{label && <span>{label}</span>}
 			<input {...props}/>
 		</label>
@@ -17,14 +23,36 @@ const Select: Function = ({label, options, ...props}: { label: string, options: 
 	));
 	
 	return (
-		<label className={styles.Select}>
+		<label className={styles.Form__select}>
 			<span>{label}</span>
 			<select {...props}>{optionsList}</select>
 		</label>
 	);
 };
 
-const Form: Function & { Input: Function, Select: Function } = ({children}: { children: JSX.Element }): JSX.Element => {
+const Header: Function = ({title, ...props}: { title: string }): JSX.Element => {
+	return (
+		<header {...props} className={styles.FormHeader}>
+			<h2>{title}</h2>
+		</header>
+	);
+};
+
+const Button: Function = ({children, ...props}: {children: JSX.Element}): JSX.Element => {
+	return (
+		<button {...props} className={styles.Form__button} type="submit">{children}</button>
+	)
+};
+
+interface IForm {
+	Input: Function,
+	Select: Function,
+	Row: Function,
+	Header: Function,
+	Button: Function
+}
+
+const Form: Function & IForm = ({children}: { children: JSX.Element }): JSX.Element => {
 	return (
 		<div className={styles.Form}>{children}</div>
 	);
@@ -32,5 +60,8 @@ const Form: Function & { Input: Function, Select: Function } = ({children}: { ch
 
 Form.Input = Input;
 Form.Select = Select;
+Form.Row = Row;
+Form.Header = Header;
+Form.Button = Button;
 
 export default Form;

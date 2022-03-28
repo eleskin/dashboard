@@ -67,17 +67,19 @@ const WizardSlider: Function = ({
 						when they land on the app page.
 					</p>
 					<Form>
-						<Form.Input
-							label="Your Full Name"
-							type="text"
-							placeholder="Enter your Full Name"
-							value={fullName}
-							onInput={(event: InputEvent | any): void => setFullName(event.target.value)}
-						/>
-						<Form.Select
-							label="Your Role"
-							options={['Web Developer', 'Business Owner', 'Other']}
-						/>
+						<Form.Row>
+							<Form.Input
+								label="Your Full Name"
+								type="text"
+								placeholder="Enter your Full Name"
+								value={fullName}
+								onInput={(event: InputEvent | any): void => setFullName(event.target.value)}
+							/>
+							<Form.Select
+								label="Your Role"
+								options={['Web Developer', 'Business Owner', 'Other']}
+							/>
+						</Form.Row>
 					</Form>
 				</div>
 			</div>

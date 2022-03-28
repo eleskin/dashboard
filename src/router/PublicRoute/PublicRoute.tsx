@@ -1,12 +1,12 @@
 import {Navigate} from 'react-router-dom';
 
 const PublicRoute: Function = ({
-	                               element: Element,
+	                               children,
 	                               isAuth,
-                               }: { element: JSX.Element | any, isAuth: boolean }): JSX.Element | null => {
+                               }: { children: JSX.Element | any, isAuth: boolean }): JSX.Element | null => {
 	if (isAuth === null) return null;
 	
-	return !isAuth ? <Element auth={isAuth}/> : <Navigate to="/home"/>;
+	return !isAuth ? children : <Navigate to="/home"/>;
 };
 
 export default PublicRoute;
