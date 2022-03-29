@@ -6,9 +6,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from 'react-router-dom';
 import store from './store';
-import {authenticate} from './store/slices/user';
+import {authenticateByLocalStorage, authenticate} from './store/slices/user';
 
-store.dispatch(authenticate());
+// store.dispatch(authenticateByLocalStorage());
+store.dispatch(authenticate()).then((e: any) => {
+	console.log(e)
+	store.dispatch(authenticateByLocalStorage());
+});
 
 ReactDOM.render(
 	<React.StrictMode>

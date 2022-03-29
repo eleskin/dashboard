@@ -42,9 +42,17 @@ export const isValidURL: Function = (url: string): boolean => {
 	}
 };
 
+export const deleteURL: Function = (): void => {
+	localStorage.removeItem('current_website');
+};
+
 export const getToken: Function = (): string => `${localStorage.getItem('token_type')} ${localStorage.getItem('access_token')}`;
 
-export const deleteToken: Function = (): void => localStorage.clear();
+export const deleteToken: Function = (): void => {
+	localStorage.removeItem('access_token');
+	localStorage.removeItem('token_type');
+	localStorage.removeItem('expires_in');
+};
 
 export const setToken: Function = (token: { access_token: string, token_type: string, expires_in: string }): void => {
 	const {

@@ -1,13 +1,13 @@
 import {createAsyncThunk, createSlice, Slice} from '@reduxjs/toolkit';
-import axios from 'axios';
-import {isValidURL, setToken} from '../../utils/functions';
+import axios, {AxiosResponse} from 'axios';
+import {deleteToken, deleteURL, getToken, isValidURL, setToken} from '../../utils/functions';
 
 const checkURL: Function = (): Promise<boolean> => new Promise((resolve: Function, reject: Function): void => {
 	isValidURL(localStorage.getItem('current_website')) ? resolve(true) : reject(false);
 });
 
-export const authenticate: any = createAsyncThunk(
-	'user/authenticate',
+export const authenticateByLocalStorage: any = createAsyncThunk(
+	'user/authenticateByLocalStorage',
 	async (): Promise<boolean | undefined> => {
 		try {
 			const response: boolean = await checkURL();
@@ -18,6 +18,30 @@ export const authenticate: any = createAsyncThunk(
 			
 			return undefined;
 		} catch (error: Error | any) {
+			deleteURL();
+			throw new Error(error);
+		}
+	},
+	{},
+);
+
+export const authenticate: any = createAsyncThunk(
+	'user/authenticate',
+	async (): Promise<object | undefined> => {
+		try {
+			const response: AxiosResponse = await axios.get('http://localhost/api/auth/user', {
+				headers: {
+					Authorization: getToken(),
+				},
+			});
+			
+			if (response.status === 200) {
+				return {id: response.data.id, name: response.data.name};
+			}
+			
+			return undefined;
+		} catch (error: Error | any) {
+			deleteToken();
 			throw new Error(error);
 		}
 	},
@@ -35,7 +59,7 @@ export const register: any = createAsyncThunk(
 		       passwordConfirmation,
 	       }: { firstName: string, lastName: string, phoneNumber: string, email: string, password: string, passwordConfirmation: string }): Promise<object | undefined> => {
 		try {
-			const response = await axios.post('http://localhost/api/auth/register', {
+			const response: AxiosResponse = await axios.post('http://localhost/api/auth/register', {
 				first_name: firstName,
 				last_name: lastName,
 				phone_number: phoneNumber,
@@ -48,7 +72,7 @@ export const register: any = createAsyncThunk(
 				setToken(response.data);
 				return {id: response.data.id, name: response.data.name};
 			}
-
+			
 			return undefined;
 		} catch (error: Error | any) {
 			throw new Error(error);
@@ -61,7 +85,7 @@ const initialState: {
 	isAuth: boolean | null,
 	isRegistered: boolean
 } = {
-	isLoading: false,
+	isLoading: true,
 	isAuth: null,
 	isRegistered: false,
 };
@@ -78,22 +102,37 @@ const slice: Slice = createSlice({
 		},
 		login(state: any): void {
 			state.isAuth = true;
+			state.isLoading = false;
 		},
 	},
 	extraReducers: {
-		[authenticate.fulfilled]: (state: typeof initialState, {payload}: { payload: any }): void => {
+		[authenticateByLocalStorage.fulfilled]: (state: typeof initialState, {payload}: { payload: any }): void => {
 			if (payload) {
 				state.isAuth = payload;
+				state.isLoading = false;
 			}
 		},
-		[authenticate.rejected]: (state: typeof initialState): void => {
+		[authenticateByLocalStorage.rejected]: (state: typeof initialState): void => {
 			state.isAuth = false;
+			state.isLoading = false;
 		},
-		[register.fulfilled]: (state: typeof initialState, {payload}: {payload: any}): void => {
+		[authenticate.fulfilled]: (state: typeof initialState, {payload}: { payload: any }): void => {
+			if (payload) {
+				state.isAuth = true;
+				state.isRegistered = true;
+			}
+			state.isLoading = false;
+		},
+		[authenticate.rejected]: (state: typeof initialState): void => {
+			state.isRegistered = false;
+			state.isLoading = false;
+		},
+		[register.fulfilled]: (state: typeof initialState, {payload}: { payload: any }): void => {
 			if (payload) {
 				state.isRegistered = true;
 			}
-		}
+			state.isLoading = false;
+		},
 	},
 });
 
