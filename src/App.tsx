@@ -52,7 +52,7 @@ const App: JSXElementConstructor<any> = ({isLoading, isAuth}: {isLoading: boolea
 };
 
 export default connect(
-	(state: any) => ({
+	(state: any): any => ({
 		isLoading: state.userSlice.isLoading,
 		isAuth: state.userSlice.isAuth
 	})

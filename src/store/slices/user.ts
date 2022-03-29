@@ -24,31 +24,31 @@ export const authenticate: any = createAsyncThunk(
 	{},
 );
 
-export const register = createAsyncThunk(
+export const register: any = createAsyncThunk(
 	'user/register',
 	async ({
 		       firstName,
 		       lastName,
-		       tel,
+		       phoneNumber,
 		       email,
 		       password,
 		       passwordConfirmation,
-	       }: { firstName: string, lastName: string, tel: string, email: string, password: string, passwordConfirmation: string }): Promise<object | undefined> => {
+	       }: { firstName: string, lastName: string, phoneNumber: string, email: string, password: string, passwordConfirmation: string }): Promise<object | undefined> => {
 		try {
 			const response = await axios.post('http://localhost/api/auth/register', {
-				firstName,
-				lastName,
-				tel,
-				email,
-				password,
-				passwordConfirmation,
+				first_name: firstName,
+				last_name: lastName,
+				phone_number: phoneNumber,
+				email: email,
+				password: password,
+				password_confirmation: passwordConfirmation,
 			});
 			
 			if (response.status === 200) {
 				setToken(response.data);
 				return {id: response.data.id, name: response.data.name};
 			}
-			
+
 			return undefined;
 		} catch (error: Error | any) {
 			throw new Error(error);
@@ -58,10 +58,12 @@ export const register = createAsyncThunk(
 
 const initialState: {
 	isLoading: boolean,
-	isAuth: boolean | null
+	isAuth: boolean | null,
+	isRegistered: boolean
 } = {
 	isLoading: false,
 	isAuth: null,
+	isRegistered: false,
 };
 
 const slice: Slice = createSlice({
@@ -87,6 +89,11 @@ const slice: Slice = createSlice({
 		[authenticate.rejected]: (state: typeof initialState): void => {
 			state.isAuth = false;
 		},
+		[register.fulfilled]: (state: typeof initialState, {payload}: {payload: any}): void => {
+			if (payload) {
+				state.isRegistered = true;
+			}
+		}
 	},
 });
 

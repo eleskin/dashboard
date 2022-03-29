@@ -1,5 +1,6 @@
+import {connect} from 'react-redux';
 import styles from './Profile.module.css';
-import {Dispatch, MouseEventHandler, SetStateAction} from 'react';
+import {Dispatch, JSXElementConstructor, MouseEventHandler, SetStateAction} from 'react';
 import Headline from '../Headline/Headline';
 import Progress from '../Progress/Progress';
 import Bonus from '../Bonus/Bonus';
@@ -7,10 +8,11 @@ import Steps from '../Steps/Steps';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 
-const Profile: Function = ({
-	                           isActiveProfile,
-	                           setIsActiveProfile,
-                           }: { isActiveProfile: boolean, setIsActiveProfile: Dispatch<SetStateAction<boolean>> }): JSX.Element => {
+const Profile: JSXElementConstructor<any> = ({
+	                                             isActiveProfile,
+	                                             setIsActiveProfile,
+	                                             isRegistered,
+                                             }: { isActiveProfile: boolean, setIsActiveProfile: Dispatch<SetStateAction<boolean>>, isRegistered: boolean }): JSX.Element => {
 	const handleButtonClick: MouseEventHandler = (): void => setIsActiveProfile(!isActiveProfile);
 	
 	return (
@@ -35,12 +37,18 @@ const Profile: Function = ({
 					</button>
 				</h3>
 				<Headline theme="dark"/>
-				<Progress value={0}/>
-				<Steps/>
+				<Progress value={!isRegistered ? 0 : 25}/>
+				<Steps isRegistered={isRegistered}/>
 				<Bonus/>
 			</div>
 		</div>
 	);
 };
 
-export default Profile;
+export default connect(
+	(state: any, props: any): any => ({
+		isActiveProfile: props.isRegistered,
+		setIsActiveProfile: props.isRegistered,
+		isRegistered: state.userSlice.isRegistered,
+	})
+)(Profile);

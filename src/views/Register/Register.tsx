@@ -1,12 +1,16 @@
+import {Navigate} from 'react-router-dom';
 import styles from './Register.module.css';
-import {Dispatch, FormEvent, FormEventHandler, SetStateAction, useState} from 'react';
+import {Dispatch, FormEvent, FormEventHandler, JSXElementConstructor, SetStateAction, useState} from 'react';
+import {connect, useDispatch} from 'react-redux';
+import {register} from '../../store/slices/user';
 import Form from '../../components/Form/Form';
 import Title from '../../components/Title/Title';
 
-const Register: Function = (): JSX.Element => {
+const Register: JSXElementConstructor<any> = ({isRegistered}: {isRegistered: boolean}): JSX.Element => {
+	const dispatch = useDispatch();
 	const [firstNameField, setFirstNameField]: [string, Dispatch<SetStateAction<string>>] = useState('');
 	const [lastNameField, setLastNameField]: [string, Dispatch<SetStateAction<string>>] = useState('');
-	const [telField, setTelField]: [string, Dispatch<SetStateAction<string>>] = useState('');
+	const [phoneNumberField, setPhoneNumberField]: [string, Dispatch<SetStateAction<string>>] = useState('');
 	const [emailField, setEmailField]: [string, Dispatch<SetStateAction<string>>] = useState('');
 	const [passwordField, setPasswordField]: [string, Dispatch<SetStateAction<string>>] = useState('');
 	const [passwordConfirmationField, setPasswordConfirmationField]: [string, Dispatch<SetStateAction<string>>] = useState('');
@@ -20,10 +24,17 @@ const Register: Function = (): JSX.Element => {
 			return undefined;
 		}
 		
-		console.log(1)
+		dispatch(register({
+			firstName: firstNameField,
+			lastName: lastNameField,
+			phoneNumber: phoneNumberField,
+			email: emailField,
+			password: passwordField,
+			passwordConfirmation: passwordConfirmationField,
+		}));
 	};
 	
-	return (
+	return !isRegistered ? (
 		<div className={styles.Register}>
 			<Title value="Signup Account"/>
 			<form className={styles.Register__form} onSubmit={handleFormSubmit}>
@@ -53,8 +64,8 @@ const Register: Function = (): JSX.Element => {
 							label="Phone Number"
 							placeholder="Enter Phone Number"
 							required={true}
-							value={telField}
-							onInput={(event: InputEvent | any): void => setTelField(event.target.value)}
+							value={phoneNumberField}
+							onInput={(event: InputEvent | any): void => setPhoneNumberField(event.target.value)}
 						/>
 					</Form.Row>
 					<Form.Row>
@@ -101,7 +112,13 @@ const Register: Function = (): JSX.Element => {
 				</Form>
 			</form>
 		</div>
+	) : (
+		<Navigate to="/"/>
 	);
 };
 
-export default Register;
+export default connect(
+	(state: any): any => ({
+		isRegistered: state.userSlice.isRegistered,
+	})
+)(Register);

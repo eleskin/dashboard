@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import steps_icon_1 from '../../assets/images/steps/steps-icon-1.svg';
 import steps_icon_2 from '../../assets/images/steps/steps-icon-2.svg';
 
-const Steps: Function = (): JSX.Element => {
+const Steps: Function = ({isRegistered}: {isRegistered: boolean}): JSX.Element => {
 	const step: Function = useCallback((title: string, subtitle: string, isCompleted: boolean, link: string): JSX.Element => (
 		<Link
 			to={link}
@@ -21,7 +21,7 @@ const Steps: Function = (): JSX.Element => {
 	
 	return (
 		<div className={styles.Steps}>
-			{step('Signup account', 'You have registered account', false, '/register')}
+			{step('Signup account', 'You have registered account', isRegistered, '/register')}
 			{step('Connect Google Analytics', 'You have connected account', false, '/')}
 			{step('Add Facebook account', 'You can connect social media', false, '/')}
 			{step('Deposit Money', 'You can deposit from your bank', false, '/')}
