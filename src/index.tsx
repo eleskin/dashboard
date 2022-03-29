@@ -7,11 +7,10 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from 'react-router-dom';
 import store from './store';
 import {authenticateByLocalStorage, authenticate} from './store/slices/user';
+import {dispatch} from './utils/functions';
 
-// store.dispatch(authenticateByLocalStorage());
-store.dispatch(authenticate()).then((e: any) => {
-	console.log(e)
-	store.dispatch(authenticateByLocalStorage());
+dispatch(authenticate()).then((): void => {
+	dispatch(authenticateByLocalStorage());
 });
 
 ReactDOM.render(

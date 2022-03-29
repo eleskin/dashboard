@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice, Slice} from '@reduxjs/toolkit';
 import axios, {AxiosResponse} from 'axios';
-import {deleteToken, deleteURL, getToken, isValidURL, setToken} from '../../utils/functions';
+import {deleteToken, deleteURL, getToken, getURL, isValidURL, setToken} from '../../utils/functions';
 
 const checkURL: Function = (): Promise<boolean> => new Promise((resolve: Function, reject: Function): void => {
 	isValidURL(localStorage.getItem('current_website')) ? resolve(true) : reject(false);
@@ -66,11 +66,13 @@ export const register: any = createAsyncThunk(
 				email: email,
 				password: password,
 				password_confirmation: passwordConfirmation,
+				website_url: getURL(),
 			});
 			
 			if (response.status === 200) {
-				setToken(response.data);
-				return {id: response.data.id, name: response.data.name};
+				deleteURL();
+				setToken(response.data.token.original);
+				return {id: response.data.user.id, name: response.data.user.name};
 			}
 			
 			return undefined;

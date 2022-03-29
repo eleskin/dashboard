@@ -1,3 +1,5 @@
+import store from '../../store';
+
 const _isURL: Function = (string: string): boolean => {
 	const pattern: RegExp = new RegExp('^(https?:\\/\\/)?' + // protocol
 		'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + // domain name
@@ -42,9 +44,15 @@ export const isValidURL: Function = (url: string): boolean => {
 	}
 };
 
+export const dispatch: Function = (func: any): any => {
+	return store.dispatch(func);
+};
+
 export const deleteURL: Function = (): void => {
 	localStorage.removeItem('current_website');
 };
+
+export const getURL: Function = (): string | null => localStorage.getItem('current_website')
 
 export const getToken: Function = (): string => `${localStorage.getItem('token_type')} ${localStorage.getItem('access_token')}`;
 
