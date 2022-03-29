@@ -14,13 +14,13 @@
 	justify-content: center;
 	align-items: center;
 	opacity: 0;
-	transition: opacity 0.4s linear 0s, z-index 0s linear 0.4s;
+	transition: opacity 0.3s linear 1s, z-index 0s linear 1.3s;
 }
 
 .Preloader_active .Preloader__container {
 	z-index: 2;
 	opacity: 1;
-	transition: opacity 0.4s linear 0s, z-index 0s linear 0s;
+	transition: opacity 0.3s linear 1s, z-index 0s linear 1s;
 }
 
 .Preloader__container span {
