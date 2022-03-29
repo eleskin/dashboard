@@ -1,27 +1,72 @@
 import {createAsyncThunk, createSlice, Slice} from '@reduxjs/toolkit';
-import {isValidURL} from '../../utils/functions';
+import axios from 'axios';
+import {isValidURL, setToken} from '../../utils/functions';
+
+const checkURL: Function = (): Promise<boolean> => new Promise((resolve: Function, reject: Function): void => {
+	isValidURL(localStorage.getItem('current_website')) ? resolve(true) : reject(false);
+});
 
 export const authenticate: any = createAsyncThunk(
 	'user/authenticate',
-	async () => new Promise((resolve, reject) => {
-		if (isValidURL(localStorage.getItem('current_website'))) {
-			const currentURL: URL = new URL(localStorage.getItem('current_website') || '');
-			resolve(currentURL.toString() as any);
-		} else {
-			reject(undefined as any);
-			throw new Error('Invalid URL');
+	async (): Promise<boolean | undefined> => {
+		try {
+			const response: boolean = await checkURL();
+			
+			if (response) {
+				return true;
+			}
+			
+			return undefined;
+		} catch (error: Error | any) {
+			throw new Error(error);
 		}
-		reject(undefined as any);
-	}),
-	{}
-)
+	},
+	{},
+);
+
+export const register = createAsyncThunk(
+	'user/register',
+	async ({
+		       firstName,
+		       lastName,
+		       tel,
+		       email,
+		       password,
+		       passwordConfirmation,
+	       }: { firstName: string, lastName: string, tel: string, email: string, password: string, passwordConfirmation: string }): Promise<object | undefined> => {
+		try {
+			const response = await axios.post('http://localhost/api/auth/register', {
+				firstName,
+				lastName,
+				tel,
+				email,
+				password,
+				passwordConfirmation,
+			});
+			
+			if (response.status === 200) {
+				setToken(response.data);
+				return {id: response.data.id, name: response.data.name};
+			}
+			
+			return undefined;
+		} catch (error: Error | any) {
+			throw new Error(error);
+		}
+	},
+);
+
+const initialState: {
+	isLoading: boolean,
+	isAuth: boolean | null
+} = {
+	isLoading: false,
+	isAuth: null,
+};
 
 const slice: Slice = createSlice({
 	name: 'user',
-	initialState: {
-		isLoading: false,
-		isAuth: false,
-	},
+	initialState: initialState,
 	reducers: {
 		loaded(state: any): void {
 			state.isLoading = false;
@@ -29,24 +74,21 @@ const slice: Slice = createSlice({
 		loading(state: any): void {
 			state.isLoading = true;
 		},
-		logout(state: any): void {
-			state.isAuth = false;
-		},
 		login(state: any): void {
 			state.isAuth = true;
 		},
 	},
 	extraReducers: {
-		[authenticate.fulfilled]: (state, {payload}) => {
+		[authenticate.fulfilled]: (state: typeof initialState, {payload}: { payload: any }): void => {
 			if (payload) {
-				state.isAuth = true;
+				state.isAuth = payload;
 			}
 		},
-		[authenticate.rejected]: (state) => {
+		[authenticate.rejected]: (state: typeof initialState): void => {
 			state.isAuth = false;
 		},
 	},
 });
 
-export const {loaded, loading, logout, login} = slice.actions;
+export const {loaded, loading, login} = slice.actions;
 export default slice.reducer;

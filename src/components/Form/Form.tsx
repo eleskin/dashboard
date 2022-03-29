@@ -31,10 +31,11 @@ const Select: Function = ({label, options, ...props}: { label: string, options: 
 	);
 };
 
-const Header: Function = ({title, ...props}: { title: string }): JSX.Element => {
+const Header: Function = ({title, subtitle, ...props}: { title: string, subtitle?: string }): JSX.Element => {
 	return (
 		<header {...props} className={styles.FormHeader}>
 			<h2>{title}</h2>
+			{subtitle && <span>{subtitle}</span>}
 		</header>
 	);
 };
@@ -45,12 +46,19 @@ const Button: Function = ({children, ...props}: {children: JSX.Element}): JSX.El
 	)
 };
 
+const Footer: Function = ({children, ...props}: {children: JSX.Element}): JSX.Element => {
+	return (
+		<footer {...props} className={styles.Form__footer}>{children}</footer>
+	)
+};
+
 interface IForm {
 	Input: Function,
 	Select: Function,
 	Row: Function,
 	Header: Function,
-	Button: Function
+	Button: Function,
+	Footer: Function
 }
 
 const Form: Function & IForm = ({children}: { children: JSX.Element }): JSX.Element => {
@@ -64,5 +72,6 @@ Form.Select = Select;
 Form.Row = Row;
 Form.Header = Header;
 Form.Button = Button;
+Form.Footer = Footer;
 
 export default Form;

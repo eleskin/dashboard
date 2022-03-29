@@ -11,7 +11,6 @@ const Profile: Function = ({
 	                           isActiveProfile,
 	                           setIsActiveProfile,
                            }: { isActiveProfile: boolean, setIsActiveProfile: Dispatch<SetStateAction<boolean>> }): JSX.Element => {
-	
 	const handleButtonClick: MouseEventHandler = (): void => setIsActiveProfile(!isActiveProfile);
 	
 	return (
@@ -36,7 +35,7 @@ const Profile: Function = ({
 					</button>
 				</h3>
 				<Headline theme="dark"/>
-				<Progress value={65}/>
+				<Progress value={0}/>
 				<Steps/>
 				<Bonus/>
 			</div>

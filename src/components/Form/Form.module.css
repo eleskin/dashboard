@@ -4,15 +4,27 @@
 	width: 100%;
 }
 
+.FormHeader {
+	border-bottom: 1px solid #eeeeee;
+	padding-bottom: 16px;
+}
+
 .FormHeader h2 {
 	padding: 0;
-	margin: 0;
-	font-size: 24px;
+	margin: 0 0 6px 0;
+	font-size: 20px;
+	font-weight: 500;
+	color: #334152;
+}
+
+.FormHeader span {
+	color: #999;
 	font-weight: 400;
+	font-size: 14px;
 }
 
 .Form__row:first-of-type {
-	margin-top: 30px;
+	margin-top: 24px;
 }
 
 .Form__row {
@@ -33,6 +45,8 @@
 	padding: 6px 12px;
 	outline: none;
 	transition: var(--main-transition);
+	-webkit-box-shadow: inset 0 0 0 50px #ffffff;
+	-webkit-text-fill-color: #495057;
 }
 
 .Form__input > input::placeholder, .Form__select > select::placeholder {
@@ -46,12 +60,13 @@
 .Form__input_incorrect > input {
 	border-color: #e45456;
 	color: #e45456;
-	background-color: rgba(228, 84, 86, 0.05);
+	-webkit-text-fill-color: #e45456;
 }
 
 .Form__input_incorrect > input:focus {
 	color: #495057;
 	background-color: #ffffff;
+	-webkit-text-fill-color: #495057;
 }
 
 .Form__input, .Form__select {
@@ -87,7 +102,7 @@
 }
 
 .Form__button {
-	margin: 0 0 0 auto;
+	margin: 0;
 	color: #ffffff;
 	background-color: #047bf8;
 	border: none;
@@ -100,6 +115,11 @@
 
 .Form__button:hover {
 	background-color: #0368d2;
+}
+
+.Form__footer {
+	border-top: 1px solid #eeeeee;
+	padding-top: 16px;
 }
 
 @media (max-width: 640px) {
