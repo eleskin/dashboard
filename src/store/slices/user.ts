@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice, Slice} from '@reduxjs/toolkit';
 import axios, {AxiosResponse} from 'axios';
-import {deleteToken, deleteURL, getToken, getURL, isValidURL, setToken} from '../../utils/functions';
+import {deleteToken, getToken, getURL, isValidURL, setToken} from '../../utils/functions';
 
 const checkURL: Function = (): Promise<boolean> => new Promise((resolve: Function, reject: Function): void => {
 	isValidURL(localStorage.getItem('current_website')) ? resolve(true) : reject(false);
@@ -18,7 +18,6 @@ export const authenticateByLocalStorage: any = createAsyncThunk(
 			
 			return undefined;
 		} catch (error: Error | any) {
-			deleteURL();
 			throw new Error(error);
 		}
 	},
@@ -70,9 +69,12 @@ export const register: any = createAsyncThunk(
 			});
 			
 			if (response.status === 200) {
-				deleteURL();
 				setToken(response.data.token.original);
-				return {id: response.data.user.id, name: response.data.user.name};
+				return {status: true, id: response.data.user.id, name: response.data.user.name};
+			}
+			
+			if (response.status === 208) {
+				return {status: false, conflictFields: response.data.conflict_fields};
 			}
 			
 			return undefined;
@@ -130,7 +132,7 @@ const slice: Slice = createSlice({
 			state.isLoading = false;
 		},
 		[register.fulfilled]: (state: typeof initialState, {payload}: { payload: any }): void => {
-			if (payload) {
+			if (payload.status) {
 				state.isRegistered = true;
 			}
 			state.isLoading = false;

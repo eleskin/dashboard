@@ -6,7 +6,7 @@ import {register} from '../../store/slices/user';
 import Form from '../../components/Form/Form';
 import Title from '../../components/Title/Title';
 
-const Register: JSXElementConstructor<any> = ({isRegistered}: {isRegistered: boolean}): JSX.Element => {
+const Register: JSXElementConstructor<any> = ({isRegistered}: { isRegistered: boolean }): JSX.Element => {
 	const dispatch = useDispatch();
 	const [firstNameField, setFirstNameField]: [string, Dispatch<SetStateAction<string>>] = useState('');
 	const [lastNameField, setLastNameField]: [string, Dispatch<SetStateAction<string>>] = useState('');
@@ -15,6 +15,8 @@ const Register: JSXElementConstructor<any> = ({isRegistered}: {isRegistered: boo
 	const [passwordField, setPasswordField]: [string, Dispatch<SetStateAction<string>>] = useState('');
 	const [passwordConfirmationField, setPasswordConfirmationField]: [string, Dispatch<SetStateAction<string>>] = useState('');
 	
+	const [phoneNumberFieldError, setPhoneNumberFieldError]: [string, Dispatch<SetStateAction<string>>] = useState('');
+	const [emailFieldError, setEmailFieldError]: [string, Dispatch<SetStateAction<string>>] = useState('');
 	const [passwordFieldError, setPasswordFieldError]: [string, Dispatch<SetStateAction<string>>] = useState('');
 	
 	const handleFormSubmit: FormEventHandler = (event: FormEvent): void => {
@@ -31,7 +33,18 @@ const Register: JSXElementConstructor<any> = ({isRegistered}: {isRegistered: boo
 			email: emailField,
 			password: passwordField,
 			passwordConfirmation: passwordConfirmationField,
-		}));
+		})).then((data: any): void => {
+			if (data.payload.conflictFields.length === 2) {
+				setPhoneNumberFieldError('A user with this phone number is already registered');
+				setEmailFieldError('User with this email is already registered');
+			} else if (data.payload.conflictFields.length === 1) {
+				if (data.payload.conflictFields[0] === 'phone_number') {
+					setPhoneNumberFieldError('A user with this phone number is already registered');
+				} else if (data.payload.conflictFields[0] === 'email') {
+					setEmailFieldError('User with this email is already registered');
+				}
+			}
+		});
 	};
 	
 	return !isRegistered ? (
@@ -65,7 +78,11 @@ const Register: JSXElementConstructor<any> = ({isRegistered}: {isRegistered: boo
 							placeholder="Enter Phone Number"
 							required={true}
 							value={phoneNumberField}
-							onInput={(event: InputEvent | any): void => setPhoneNumberField(event.target.value)}
+							onInput={(event: InputEvent | any): void => {
+								setPhoneNumberField(event.target.value);
+								setPhoneNumberFieldError('');
+							}}
+							error={phoneNumberFieldError}
 						/>
 					</Form.Row>
 					<Form.Row>
@@ -75,7 +92,11 @@ const Register: JSXElementConstructor<any> = ({isRegistered}: {isRegistered: boo
 							placeholder="Enter Email Address"
 							required={true}
 							value={emailField}
-							onInput={(event: InputEvent | any): void => setEmailField(event.target.value)}
+							onInput={(event: InputEvent | any): void => {
+								setEmailField(event.target.value);
+								setEmailFieldError('');
+							}}
+							error={emailFieldError}
 						/>
 					</Form.Row>
 					<Form.Row>
@@ -108,6 +129,7 @@ const Register: JSXElementConstructor<any> = ({isRegistered}: {isRegistered: boo
 					</Form.Row>
 					<Form.Footer>
 						<Form.Button>Create Account</Form.Button>
+						<Form.Link to="/login">Sign in</Form.Link>
 					</Form.Footer>
 				</Form>
 			</form>
@@ -120,5 +142,5 @@ const Register: JSXElementConstructor<any> = ({isRegistered}: {isRegistered: boo
 export default connect(
 	(state: any): any => ({
 		isRegistered: state.userSlice.isRegistered,
-	})
+	}),
 )(Register);

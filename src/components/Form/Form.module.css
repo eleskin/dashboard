@@ -117,9 +117,24 @@
 	background-color: #0368d2;
 }
 
+.Form__link {
+	color: #047bf8;
+	font-size: 14px;
+	text-decoration: none;
+	transition: var(--main-transition);
+}
+
+.Form__link:hover {
+	color: #0368d2;
+}
+
 .Form__footer {
 	border-top: 1px solid #eeeeee;
-	padding-top: 16px;
+	padding-top: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 }
 
 @media (max-width: 640px) {

@@ -1,4 +1,5 @@
 import styles from './Form.module.css';
+import {Link as RouterLink} from 'react-router-dom';
 
 const Row: Function = ({children, ...props}: { children: JSX.Element }): JSX.Element => {
 	return (
@@ -46,6 +47,12 @@ const Button: Function = ({children, ...props}: {children: JSX.Element}): JSX.El
 	)
 };
 
+const Link: Function = ({children, to, ...props}: {children: JSX.Element, to: string}): JSX.Element => {
+	return (
+		<RouterLink {...props} to={to} className={styles.Form__link}>{children}</RouterLink>
+	)
+};
+
 const Footer: Function = ({children, ...props}: {children: JSX.Element}): JSX.Element => {
 	return (
 		<footer {...props} className={styles.Form__footer}>{children}</footer>
@@ -58,6 +65,7 @@ interface IForm {
 	Row: Function,
 	Header: Function,
 	Button: Function,
+	Link: Function,
 	Footer: Function
 }
 
@@ -72,6 +80,7 @@ Form.Select = Select;
 Form.Row = Row;
 Form.Header = Header;
 Form.Button = Button;
+Form.Link = Link;
 Form.Footer = Footer;
 
 export default Form;
