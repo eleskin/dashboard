@@ -44,6 +44,8 @@ export const isValidURL: Function = (url: string): boolean => {
 	}
 };
 
+export const deleteWebsite: Function = (): void => localStorage.removeItem('current_website');
+
 export const dispatch: Function = (func: any): any => {
 	return store.dispatch(func);
 };

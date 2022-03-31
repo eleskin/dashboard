@@ -49,10 +49,10 @@ const Register: JSXElementConstructor<any> = ({isRegistered}: { isRegistered: bo
 	
 	return !isRegistered ? (
 		<div className={styles.Register}>
-			<Title value="Signup Account"/>
+			<Title value="Sign Up Account"/>
 			<form className={styles.Register__form} onSubmit={handleFormSubmit}>
 				<Form>
-					<Form.Header title="Default Layout" subtitle="Please fill in the form fields"/>
+					<Form.Header title="Sign Up" subtitle="Please fill in the form fields"/>
 					<Form.Row>
 						<Form.Input
 							type="text"

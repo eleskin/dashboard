@@ -20,7 +20,7 @@
 .Preloader_active .Preloader__container {
 	z-index: 2;
 	opacity: 1;
-	transition: opacity 0.3s linear 1s, z-index 0s linear 1s;
+	transition: opacity 0.3s linear 0s, z-index 0s linear 0s;
 }
 
 .Preloader__container span {

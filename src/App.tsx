@@ -12,6 +12,7 @@ import PublicRoute from './router/PublicRoute/PublicRoute';
 import Home from './views/Home/Home';
 import Start from './views/Start/Start';
 import Register from './views/Register/Register';
+import Login from './views/Login/Login';
 
 const App: JSXElementConstructor<any> = ({isLoading, isAuth}: {isLoading: boolean, isAuth: boolean}): JSX.Element => {
 	const [isHovering, setIsHovering]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(Boolean(false));
@@ -34,6 +35,14 @@ const App: JSXElementConstructor<any> = ({isLoading, isAuth}: {isLoading: boolea
 						<PrivateRoute isAuth={isAuth}>
 							<Main setIsHovering={setIsHovering}>
 								<Register/>
+							</Main>
+						</PrivateRoute>
+					}/>
+					
+					<Route path="/login" element={
+						<PrivateRoute isAuth={isAuth}>
+							<Main setIsHovering={setIsHovering}>
+								<Login/>
 							</Main>
 						</PrivateRoute>
 					}/>

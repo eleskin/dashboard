@@ -3,7 +3,7 @@ import {Dispatch, FormEvent, FormEventHandler, SetStateAction, useState} from 'r
 import {getValidURL} from '../../utils/functions';
 import Form from '../../components/Form/Form';
 import {useDispatch} from 'react-redux';
-import {loaded, loading, login} from '../../store/slices/user';
+import {loaded, loading, setLogin} from '../../store/slices/user';
 
 const Start: Function = (): JSX.Element => {
 	const [websiteURL, setWebsiteURL]: [string, Dispatch<SetStateAction<string>>] = useState('');
@@ -21,13 +21,14 @@ const Start: Function = (): JSX.Element => {
 		try {
 			localStorage.setItem('current_website', getValidURL(websiteURL).toString());
 			dispatch(loading(undefined));
+			
+			setTimeout((): void => {
+				dispatch(setLogin(undefined));
+			}, 1000);
+			
 			setTimeout((): void => {
 				dispatch(loaded(undefined));
 			}, 2000);
-			
-			setTimeout((): void => {
-				dispatch(login(undefined));
-			}, 1000);
 		} catch {
 			setErrorURL('Incorrect URL');
 		}

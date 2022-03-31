@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice, Slice} from '@reduxjs/toolkit';
 import axios, {AxiosResponse} from 'axios';
-import {deleteToken, getToken, getURL, isValidURL, setToken} from '../../utils/functions';
+import {deleteToken, deleteWebsite, getToken, getURL, isValidURL, setToken} from '../../utils/functions';
 
 const checkURL: Function = (): Promise<boolean> => new Promise((resolve: Function, reject: Function): void => {
 	isValidURL(localStorage.getItem('current_website')) ? resolve(true) : reject(false);
@@ -18,6 +18,7 @@ export const authenticateByLocalStorage: any = createAsyncThunk(
 			
 			return undefined;
 		} catch (error: Error | any) {
+			deleteWebsite();
 			throw new Error(error);
 		}
 	},
@@ -35,7 +36,8 @@ export const authenticate: any = createAsyncThunk(
 			});
 			
 			if (response.status === 200) {
-				return {id: response.data.id, name: response.data.name};
+				deleteWebsite();
+				return {status: true, id: response.data.id, name: response.data.name};
 			}
 			
 			return undefined;
@@ -70,11 +72,38 @@ export const register: any = createAsyncThunk(
 			
 			if (response.status === 200) {
 				setToken(response.data.token.original);
+				deleteWebsite();
 				return {status: true, id: response.data.user.id, name: response.data.user.name};
 			}
 			
 			if (response.status === 208) {
 				return {status: false, conflictFields: response.data.conflict_fields};
+			}
+			
+			return undefined;
+		} catch (error: Error | any) {
+			throw new Error(error);
+		}
+	},
+);
+
+export const login: any = createAsyncThunk(
+	'user/login',
+	async ({email, password}: { email: string, password: string }): Promise<object | undefined> => {
+		try {
+			const response: AxiosResponse = await axios.post('http://localhost/api/auth/login', {
+				email,
+				password,
+			});
+			
+			if (response.status === 200) {
+				setToken(response.data.token.original);
+				deleteWebsite();
+				return {status: true, id: response.data.user.id, name: response.data.user.name};
+			}
+			
+			if (response.status === 204) {
+				return {status: false, conflictFields: ['email']};
 			}
 			
 			return undefined;
@@ -104,7 +133,7 @@ const slice: Slice = createSlice({
 		loading(state: any): void {
 			state.isLoading = true;
 		},
-		login(state: any): void {
+		setLogin(state: any): void {
 			state.isAuth = true;
 			state.isLoading = false;
 		},
@@ -121,7 +150,7 @@ const slice: Slice = createSlice({
 			state.isLoading = false;
 		},
 		[authenticate.fulfilled]: (state: typeof initialState, {payload}: { payload: any }): void => {
-			if (payload) {
+			if (payload.status) {
 				state.isAuth = true;
 				state.isRegistered = true;
 			}
@@ -133,6 +162,14 @@ const slice: Slice = createSlice({
 		},
 		[register.fulfilled]: (state: typeof initialState, {payload}: { payload: any }): void => {
 			if (payload.status) {
+				state.isAuth = true;
+				state.isRegistered = true;
+			}
+			state.isLoading = false;
+		},
+		[login.fulfilled]: (state: typeof initialState, {payload}: { payload: any }): void => {
+			if (payload.status) {
+				state.isAuth = true;
 				state.isRegistered = true;
 			}
 			state.isLoading = false;
@@ -140,5 +177,5 @@ const slice: Slice = createSlice({
 	},
 });
 
-export const {loaded, loading, login} = slice.actions;
+export const {loaded, loading, setLogin} = slice.actions;
 export default slice.reducer;

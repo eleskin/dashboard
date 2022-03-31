@@ -9,8 +9,8 @@ import store from './store';
 import {authenticateByLocalStorage, authenticate} from './store/slices/user';
 import {dispatch} from './utils/functions';
 
-dispatch(authenticate()).then((): void => {
-	dispatch(authenticateByLocalStorage());
+dispatch(authenticate()).then((data: any): void => {
+	if (!data.payload?.status) dispatch(authenticateByLocalStorage());
 });
 
 ReactDOM.render(

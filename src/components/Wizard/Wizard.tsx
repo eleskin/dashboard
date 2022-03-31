@@ -35,7 +35,9 @@ const Wizard: Function = ({
 		const image: HTMLImageElement = new Image();
 		image.src = images[activeSlide];
 		image.addEventListener('load', (): void => {
-			setComputedHeight(window.getComputedStyle(slides[activeSlide].current as Element).height);
+			if (slides[activeSlide].current) {
+				setComputedHeight(window.getComputedStyle(slides[activeSlide].current as Element).height);
+			}
 		});
 	}, [activeSlide, images, slides]);
 	
