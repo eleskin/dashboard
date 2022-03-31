@@ -67,7 +67,7 @@ export const register: any = createAsyncThunk(
 				email: email,
 				password: password,
 				password_confirmation: passwordConfirmation,
-				website_url: getURL(),
+				website_url: getURL() || '',
 			});
 			
 			if (response.status === 200) {
@@ -92,8 +92,9 @@ export const login: any = createAsyncThunk(
 	async ({email, password}: { email: string, password: string }): Promise<object | undefined> => {
 		try {
 			const response: AxiosResponse = await axios.post('http://localhost/api/auth/login', {
-				email,
-				password,
+				email: email,
+				password: password,
+				website_url: getURL() || ''
 			});
 			
 			if (response.status === 200) {

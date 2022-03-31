@@ -34,14 +34,16 @@ const Register: JSXElementConstructor<any> = ({isRegistered}: { isRegistered: bo
 			password: passwordField,
 			passwordConfirmation: passwordConfirmationField,
 		})).then((data: any): void => {
-			if (data.payload.conflictFields.length === 2) {
-				setPhoneNumberFieldError('A user with this phone number is already registered');
-				setEmailFieldError('User with this email is already registered');
-			} else if (data.payload.conflictFields.length === 1) {
-				if (data.payload.conflictFields[0] === 'phone_number') {
+			if (data.payload?.conflictFields) {
+				if (data.payload.conflictFields.length === 2) {
 					setPhoneNumberFieldError('A user with this phone number is already registered');
-				} else if (data.payload.conflictFields[0] === 'email') {
 					setEmailFieldError('User with this email is already registered');
+				} else if (data.payload.conflictFields.length === 1) {
+					if (data.payload.conflictFields[0] === 'phone_number') {
+						setPhoneNumberFieldError('A user with this phone number is already registered');
+					} else if (data.payload.conflictFields[0] === 'email') {
+						setEmailFieldError('User with this email is already registered');
+					}
 				}
 			}
 		});
