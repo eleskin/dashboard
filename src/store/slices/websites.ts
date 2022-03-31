@@ -1,10 +1,10 @@
 import {createAsyncThunk, createSlice, Slice} from '@reduxjs/toolkit';
 import axios, {AxiosResponse} from 'axios';
-import {getToken} from '../../utils/functions';
+import {getToken} from '../../utils/functions/token';
 
 export const getWebsites: any = createAsyncThunk(
 	'websites/get',
-	async (): Promise<object | undefined> => {
+	async (): Promise<any> => {
 		try {
 			const response: AxiosResponse = await axios.get('http://localhost/api/websites', {
 				headers: {
@@ -13,7 +13,7 @@ export const getWebsites: any = createAsyncThunk(
 			});
 			
 			if (response.status === 200) {
-				return {websites: response.data.websites}
+				return {status: true, websites: response.data.websites};
 			}
 			
 			return undefined;
@@ -21,26 +21,30 @@ export const getWebsites: any = createAsyncThunk(
 			throw new Error(error);
 		}
 	},
-	{}
+	{},
 );
 
 const initialState: {
 	websites: Array<object>
 } = {
-	websites: []
+	websites: [],
 };
 
 const slice: Slice = createSlice({
 	name: 'websites',
 	initialState: initialState,
-	reducers: {
-	},
+	reducers: {},
 	extraReducers: {
 		[getWebsites.fulfilled]: (state: typeof initialState, {payload}: { payload: any }): void => {
 			if (payload.status) {
 				state.websites = payload.websites;
 			}
-		}
+		},
+		[getWebsites.rejected]: (state: typeof initialState): void => {
+			if (localStorage.getItem('current_website')) {
+				state.websites = [{url: localStorage.getItem('current_website')}];
+			}
+		},
 	},
 });
 

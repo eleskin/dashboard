@@ -37,10 +37,6 @@
 	align-items: center;
 }
 
-.Accounts__card img {
-	filter: brightness(0%);
-}
-
 .Accounts__info {
 	display: flex;
 	flex-direction: column;

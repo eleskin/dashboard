@@ -16,14 +16,18 @@ import Start from './views/Start/Start';
 import Register from './views/Register/Register';
 import Login from './views/Login/Login';
 
-const App: JSXElementConstructor<any> = ({isLoading, isAuth}: {isLoading: boolean, isAuth: boolean}): JSX.Element => {
+const App: JSXElementConstructor<any> = ({
+	                                         isLoading,
+	                                         isAuth,
+	                                         isRegistered,
+                                         }: { isLoading: boolean, isAuth: boolean, isRegistered: boolean }): JSX.Element => {
 	const dispatch: ReduxDispatch = useDispatch();
 	const [isHovering, setIsHovering]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(Boolean(false));
 	const [isVisibleWizard, setIsVisibleWizard]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(Boolean(true));
 	
 	useEffect((): void => {
 		dispatch(getWebsites());
-	}, [dispatch]);
+	}, [dispatch, isAuth, isRegistered]);
 	
 	return (
 		<div className={styles.App}>
@@ -76,6 +80,7 @@ const App: JSXElementConstructor<any> = ({isLoading, isAuth}: {isLoading: boolea
 export default connect(
 	(state: any): any => ({
 		isLoading: state.userSlice.isLoading,
-		isAuth: state.userSlice.isAuth
-	})
+		isAuth: state.userSlice.isAuth,
+		isRegistered: state.userSlice.isRegistered,
+	}),
 )(App);

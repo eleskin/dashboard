@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice, Slice} from '@reduxjs/toolkit';
 import axios, {AxiosResponse} from 'axios';
-import {deleteToken, deleteWebsite, getToken, getURL, isValidURL, setToken} from '../../utils/functions';
+import {deleteWebsite, getURL, isValidURL} from '../../utils/functions';
+import {deleteToken, getToken, setToken} from '../../utils/functions/token';
 
 const checkURL: Function = (): Promise<boolean> => new Promise((resolve: Function, reject: Function): void => {
 	isValidURL(localStorage.getItem('current_website')) ? resolve(true) : reject(false);
@@ -41,7 +42,6 @@ export const authenticate: any = createAsyncThunk(
 					status: true,
 					firstName: response.data.user.first_name,
 					lastName: response.data.user.last_name,
-					websites: response.data.websites,
 				};
 			}
 			
@@ -82,7 +82,6 @@ export const register: any = createAsyncThunk(
 					status: true,
 					firstName: response.data.user.first_name,
 					lastName: response.data.user.last_name,
-					websites: response.data.websites,
 				};
 			}
 			
@@ -114,7 +113,6 @@ export const login: any = createAsyncThunk(
 					status: true,
 					firstName: response.data.user.first_name,
 					lastName: response.data.user.last_name,
-					websites: response.data.websites,
 				};
 			}
 			
@@ -132,13 +130,11 @@ export const login: any = createAsyncThunk(
 const initialState: {
 	isLoading: boolean,
 	isAuth: boolean | null,
-	isRegistered: boolean,
-	websites: Array<any>
+	isRegistered: boolean
 } = {
 	isLoading: true,
 	isAuth: null,
 	isRegistered: false,
-	websites: [],
 };
 
 const slice: Slice = createSlice({
@@ -171,7 +167,6 @@ const slice: Slice = createSlice({
 			if (payload.status) {
 				state.isAuth = true;
 				state.isRegistered = true;
-				state.websites = [...payload.websites];
 			}
 			state.isLoading = false;
 		},

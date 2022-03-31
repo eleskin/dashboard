@@ -1,16 +1,16 @@
+import {getFaviconURL} from '../../utils/functions';
 import styles from './Account.module.css';
 import {Dispatch, MouseEventHandler, SetStateAction, useMemo, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEnvelope, faUser, faMoneyBill1, faBell} from '@fortawesome/free-regular-svg-icons';
 import {faArrowRightFromBracket, faChevronDown} from '@fortawesome/free-solid-svg-icons';
-import {useGetFaviconURL} from '../../utils/hooks';
 
 const Account: Function = ({isHovering}: { isHovering: boolean }): JSX.Element => {
 	const [isActiveDropdown, setIsActiveDropdown]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(Boolean(false));
 	
 	const [websiteURL]: [string, Dispatch<SetStateAction<string>>] = useState('https://apple.com/');
-	const [faviconURL]: [string, Dispatch<SetStateAction<string>>] = useGetFaviconURL(websiteURL);
+	const faviconURL: string = getFaviconURL(websiteURL);
 	
 	const AccountWebsite: JSX.Element = useMemo(() => (
 		<div className={styles.Account__website}>

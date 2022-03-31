@@ -42,10 +42,6 @@
 	border-radius: 50%;
 }
 
-.Account__icon i img {
-	filter: brightness(0%);
-}
-
 .Account__url {
 	margin-top: 8px;
 	font-weight: 400;

@@ -1,22 +1,21 @@
 import {connect} from 'react-redux';
+import {getFaviconURL} from '../../utils/functions';
 import styles from './Accounts.module.css';
 import {
 	createRef,
 	Dispatch, JSXElementConstructor, LegacyRef,
 	MouseEventHandler,
-	SetStateAction,
+	SetStateAction, useMemo,
 	useState,
 } from 'react';
 import {Link} from 'react-router-dom';
-import {useGetFaviconURL, useOutsideClickHandler} from '../../utils/hooks';
+import {useOutsideClickHandler} from '../../utils/hooks';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronDown} from '@fortawesome/free-solid-svg-icons';
 
-const Accounts: JSXElementConstructor<any> = ({websites}: {websites: Array<any>}): JSX.Element => {
-	const [websiteURL]: [string, Dispatch<SetStateAction<string>>] = useState('https://apple.com/');
-	const [faviconURL]: [string, Dispatch<SetStateAction<string>>] = useGetFaviconURL(websiteURL);
-	
+const Accounts: JSXElementConstructor<any> = ({websites}: { websites: Array<any> }): JSX.Element => {
 	const [isActiveDropdown, setIsActiveDropdown]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(Boolean(false));
+	const [activeAccountIndex]: [number, Dispatch<SetStateAction<number>>] = useState(0);
 	
 	const handleButtonClick: MouseEventHandler = (): void => setIsActiveDropdown(!isActiveDropdown);
 	
@@ -24,23 +23,44 @@ const Accounts: JSXElementConstructor<any> = ({websites}: {websites: Array<any>}
 	
 	useOutsideClickHandler(accountsElement, isActiveDropdown, setIsActiveDropdown);
 	
-	console.log(websites)
-	
-	const accountsList = websites.map((website: any, index: number): JSX.Element => {
+	const accountsList: Array<JSX.Element> = websites.map((website: any, index: number): JSX.Element => {
 		const url: URL = new URL(website.url);
-
+		const faviconURL: string = getFaviconURL(url);
+		
 		return (
-			<Link to="/" className={styles.Accounts__account} key={index}>
+			<Link to="/" className={`${styles.Accounts__account} ${activeAccountIndex === index ? styles.Accounts__account_active : ''}`} key={index}>
 				<div className={styles.Accounts__card}>
 					<img src={faviconURL} alt=""/>
 				</div>
 				<div className={styles.Accounts__info}>
 					<span>{url.host.charAt(0).toUpperCase() + url.host.slice(1)}</span>
-					<i>Balance: $5,304</i>
+					<i>Balance: ${0}</i>
 				</div>
 			</Link>
 		);
 	});
+	
+	const activeAccount: JSX.Element = useMemo((): JSX.Element => {
+		let faviconURL: string = '';
+		let websiteURL: string = '';
+		if (websites.length) {
+			const url: URL = new URL(websites[0]?.url);
+			faviconURL = getFaviconURL(url);
+			websiteURL = url.host.charAt(0).toUpperCase() + url.host.slice(1);
+		}
+		
+		return (
+			<div className={styles.Accounts__account}>
+				<div className={styles.Accounts__card}>
+					<img src={faviconURL} alt=""/>
+				</div>
+				<div className={styles.Accounts__info}>
+					<span>{websiteURL}</span>
+					<i>Balance: ${0}</i>
+				</div>
+			</div>
+		);
+	}, [websites]);
 	
 	return (
 		<div
@@ -48,15 +68,7 @@ const Accounts: JSXElementConstructor<any> = ({websites}: {websites: Array<any>}
 			ref={accountsElement}
 		>
 			<div className={styles.Accounts__selected}>
-				<div className={styles.Accounts__account}>
-					<div className={styles.Accounts__card}>
-						<img src={faviconURL} alt=""/>
-					</div>
-					<div className={styles.Accounts__info}>
-						<span>Apple.com</span>
-						<i>Balance: $5,304</i>
-					</div>
-				</div>
+				{activeAccount}
 				<button className={styles.Accounts__button} onClick={handleButtonClick}>
 					<FontAwesomeIcon
 						icon={faChevronDown}
@@ -105,7 +117,7 @@ const Accounts: JSXElementConstructor<any> = ({websites}: {websites: Array<any>}
 };
 
 export default connect(
-	// (state: any): any => ({
-	// 	websites: state.websitesSlice.websites,
-	// }),
+	(state: any): any => ({
+		websites: state.websitesSlice.websites,
+	}),
 )(Accounts);
