@@ -6,7 +6,7 @@ const PrivateRoute: Function = ({
                                 }: { children: JSX.Element | any, isAuth: boolean }): JSX.Element | null => {
 	if (isAuth === null) return null;
 	
-	return isAuth ? children : <Navigate to="/login"/>;
+	return isAuth ? children : <Navigate to="/start"/>;
 };
 
 export default PrivateRoute;

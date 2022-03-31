@@ -10,7 +10,7 @@ import NullRoute from './router/NullRoute/NullRoute';
 import PrivateRoute from './router/PrivateRoute/PrivateRoute';
 import PublicRoute from './router/PublicRoute/PublicRoute';
 import Home from './views/Home/Home';
-import Login from './views/Login/Login';
+import Start from './views/Start/Start';
 import Register from './views/Register/Register';
 
 const App: JSXElementConstructor<any> = ({isLoading, isAuth}: {isLoading: boolean, isAuth: boolean}): JSX.Element => {
@@ -38,9 +38,9 @@ const App: JSXElementConstructor<any> = ({isLoading, isAuth}: {isLoading: boolea
 						</PrivateRoute>
 					}/>
 					
-					<Route path="/login" element={
+					<Route path="/start" element={
 						<PublicRoute isAuth={isAuth}>
-							<Login/>
+							<Start/>
 						</PublicRoute>
 					}/>
 					<Route path="*" element={<NullRoute isAuth={isAuth}/>}/>

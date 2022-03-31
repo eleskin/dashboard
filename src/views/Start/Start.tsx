@@ -1,11 +1,11 @@
-import styles from './Login.module.css';
+import styles from './Start.module.css';
 import {Dispatch, FormEvent, FormEventHandler, SetStateAction, useState} from 'react';
 import {getValidURL} from '../../utils/functions';
 import Form from '../../components/Form/Form';
 import {useDispatch} from 'react-redux';
 import {loaded, loading, login} from '../../store/slices/user';
 
-const Login: Function = (): JSX.Element => {
+const Start: Function = (): JSX.Element => {
 	const [websiteURL, setWebsiteURL]: [string, Dispatch<SetStateAction<string>>] = useState('');
 	const [errorURL, setErrorURL]: [string, Dispatch<SetStateAction<string>>] = useState('');
 	const dispatch = useDispatch();
@@ -34,8 +34,8 @@ const Login: Function = (): JSX.Element => {
 	};
 	
 	return (
-		<div className={styles.Login}>
-			<form className={styles.Login__container} onSubmit={handleFormSubmit}>
+		<div className={styles.Start}>
+			<form className={styles.Start__container} onSubmit={handleFormSubmit}>
 				<Form>
 					<Form.Header title="To get started, enter your website address"/>
 					<Form.Row>
@@ -57,4 +57,4 @@ const Login: Function = (): JSX.Element => {
 	);
 };
 
-export default Login;
+export default Start;
