@@ -49,9 +49,10 @@ const Start: Function = (): JSX.Element => {
 							onInput={handleInputChange}
 						/>
 					</Form.Row>
-					<Form.Row>
+					<Form.Footer>
 						<Form.Button>Get Started</Form.Button>
-					</Form.Row>
+						<Form.Link to='/start-login'>Already registered? Sign In</Form.Link>
+					</Form.Footer>
 				</Form>
 			</form>
 		</div>

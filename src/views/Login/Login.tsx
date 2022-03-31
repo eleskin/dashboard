@@ -6,7 +6,7 @@ import {login} from '../../store/slices/user';
 import Form from '../../components/Form/Form';
 import Title from '../../components/Title/Title';
 
-const Login: JSXElementConstructor<any> = ({isRegistered}: { isRegistered: boolean }): JSX.Element => {
+const Login: JSXElementConstructor<any> = ({isAuth, isRegistered}: { isAuth: boolean, isRegistered: boolean }): JSX.Element => {
 	const dispatch = useDispatch();
 	const [emailField, setEmailField]: [string, Dispatch<SetStateAction<string>>] = useState('');
 	const [passwordField, setPasswordField]: [string, Dispatch<SetStateAction<string>>] = useState('');
@@ -35,11 +35,11 @@ const Login: JSXElementConstructor<any> = ({isRegistered}: { isRegistered: boole
 	};
 	
 	return !isRegistered ? (
-		<div className={styles.Login}>
-			<Title value="Sign In Account"/>
+		<div className={`${styles.Login} ${!isAuth ? styles.Login_start : ''}`}>
+			{isAuth && <Title value="Sign In Account"/>}
 			<form className={styles.Login__form} onSubmit={handleFormSubmit}>
 				<Form>
-					<Form.Header title="Sign In" subtitle="Please fill in the form fields"/>
+					<Form.Header title="Sign In" subtitle={isAuth ? 'Please fill in the form fields' : ''}/>
 					<Form.Row>
 						<Form.Input
 							type="email"
@@ -71,7 +71,11 @@ const Login: JSXElementConstructor<any> = ({isRegistered}: { isRegistered: boole
 					</Form.Row>
 					<Form.Footer>
 						<Form.Button>Sign In</Form.Button>
-						<Form.Link to="/register">Sign Up</Form.Link>
+						{isAuth ? (
+							<Form.Link to='/register'>Sign Up</Form.Link>
+						) : (
+							<Form.Link to='/start'>Not registered yet? Get Started</Form.Link>
+						)}
 					</Form.Footer>
 				</Form>
 			</form>
@@ -83,6 +87,7 @@ const Login: JSXElementConstructor<any> = ({isRegistered}: { isRegistered: boole
 
 export default connect(
 	(state: any): any => ({
+		isAuth: state.userSlice.isAuth,
 		isRegistered: state.userSlice.isRegistered,
 	}),
 )(Login);

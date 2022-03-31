@@ -52,6 +52,12 @@ const App: JSXElementConstructor<any> = ({isLoading, isAuth}: {isLoading: boolea
 							<Start/>
 						</PublicRoute>
 					}/>
+					
+					<Route path="/start-login" element={
+						<PublicRoute isAuth={isAuth}>
+							<Login/>
+						</PublicRoute>
+					}/>
 					<Route path="*" element={<NullRoute isAuth={isAuth}/>}/>
 				</Routes>
 				{isAuth && <Wizard isVisibleWizard={isVisibleWizard} setIsVisibleWizard={setIsVisibleWizard}/>}
