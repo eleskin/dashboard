@@ -37,7 +37,12 @@ export const authenticate: any = createAsyncThunk(
 			
 			if (response.status === 200) {
 				deleteWebsite();
-				return {status: true, id: response.data.id, name: response.data.name};
+				return {
+					status: true,
+					firstName: response.data.user.first_name,
+					lastName: response.data.user.last_name,
+					websites: response.data.websites,
+				};
 			}
 			
 			return undefined;
@@ -73,7 +78,12 @@ export const register: any = createAsyncThunk(
 			if (response.status === 200) {
 				setToken(response.data.token.original);
 				deleteWebsite();
-				return {status: true, id: response.data.user.id, name: response.data.user.name};
+				return {
+					status: true,
+					firstName: response.data.user.first_name,
+					lastName: response.data.user.last_name,
+					websites: response.data.websites,
+				};
 			}
 			
 			if (response.status === 208) {
@@ -94,13 +104,18 @@ export const login: any = createAsyncThunk(
 			const response: AxiosResponse = await axios.post('http://localhost/api/auth/login', {
 				email: email,
 				password: password,
-				website_url: getURL() || ''
+				website_url: getURL() || '',
 			});
 			
 			if (response.status === 200) {
 				setToken(response.data.token.original);
 				deleteWebsite();
-				return {status: true, id: response.data.user.id, name: response.data.user.name};
+				return {
+					status: true,
+					firstName: response.data.user.first_name,
+					lastName: response.data.user.last_name,
+					websites: response.data.websites,
+				};
 			}
 			
 			if (response.status === 204) {
@@ -117,11 +132,13 @@ export const login: any = createAsyncThunk(
 const initialState: {
 	isLoading: boolean,
 	isAuth: boolean | null,
-	isRegistered: boolean
+	isRegistered: boolean,
+	websites: Array<any>
 } = {
 	isLoading: true,
 	isAuth: null,
 	isRegistered: false,
+	websites: [],
 };
 
 const slice: Slice = createSlice({
@@ -154,6 +171,7 @@ const slice: Slice = createSlice({
 			if (payload.status) {
 				state.isAuth = true;
 				state.isRegistered = true;
+				state.websites = [...payload.websites];
 			}
 			state.isLoading = false;
 		},

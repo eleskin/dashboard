@@ -1,6 +1,7 @@
-import {connect} from 'react-redux';
+import {Dispatch as ReduxDispatch} from '@reduxjs/toolkit';
+import {connect, useDispatch} from 'react-redux';
 import styles from './App.module.css';
-import {Dispatch, JSXElementConstructor, SetStateAction, useState} from 'react';
+import {Dispatch, JSXElementConstructor, SetStateAction, useEffect, useState} from 'react';
 import {Routes, Route} from 'react-router-dom';
 import Main from './components/Main/Main';
 import Navbar from './components/Navbar/Navbar';
@@ -9,14 +10,20 @@ import Wizard from './components/Wizard/Wizard';
 import NullRoute from './router/NullRoute/NullRoute';
 import PrivateRoute from './router/PrivateRoute/PrivateRoute';
 import PublicRoute from './router/PublicRoute/PublicRoute';
+import {getWebsites} from './store/slices/websites';
 import Home from './views/Home/Home';
 import Start from './views/Start/Start';
 import Register from './views/Register/Register';
 import Login from './views/Login/Login';
 
 const App: JSXElementConstructor<any> = ({isLoading, isAuth}: {isLoading: boolean, isAuth: boolean}): JSX.Element => {
+	const dispatch: ReduxDispatch = useDispatch();
 	const [isHovering, setIsHovering]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(Boolean(false));
 	const [isVisibleWizard, setIsVisibleWizard]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(Boolean(true));
+	
+	useEffect((): void => {
+		dispatch(getWebsites());
+	}, [dispatch]);
 	
 	return (
 		<div className={styles.App}>
