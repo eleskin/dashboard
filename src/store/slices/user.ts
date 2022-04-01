@@ -127,6 +127,30 @@ export const login: any = createAsyncThunk(
 	},
 );
 
+export const logout: any = createAsyncThunk(
+	'user/logout',
+	async (): Promise<boolean | undefined> => {
+		try {
+			const response: AxiosResponse = await axios.get('http://localhost/api/auth/logout', {
+				headers: {
+					Authorization: getToken(),
+				},
+			});
+			
+			if (response.status === 200) {
+				deleteToken();
+				
+				return true;
+			}
+			
+			return undefined;
+		} catch (error: Error | any) {
+			deleteWebsite();
+			throw new Error(error);
+		}
+	},
+);
+
 const initialState: {
 	isLoading: boolean,
 	isAuth: boolean | null,
@@ -186,6 +210,18 @@ const slice: Slice = createSlice({
 				state.isAuth = true;
 				state.isRegistered = true;
 			}
+			state.isLoading = false;
+		},
+		[logout.fulfilled]: (state: typeof initialState, {payload}: { payload: any }): void => {
+			if (payload) {
+				state.isAuth = false;
+				state.isRegistered = false;
+			}
+			state.isLoading = false;
+		},
+		[logout.rejected]: (state: typeof initialState): void => {
+			state.isAuth = false;
+			state.isRegistered = false;
 			state.isLoading = false;
 		},
 	},
