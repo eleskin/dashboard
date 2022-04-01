@@ -38,6 +38,7 @@ const Main: JSXElementConstructor<any> = ({
 		if (window.innerWidth <= 720 && isActiveProfile) {
 			setIsActiveProfile(false);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	
 	return (
