@@ -25,15 +25,21 @@ export const getWebsites: any = createAsyncThunk(
 );
 
 const initialState: {
-	websites: Array<object>
+	websites: Array<object>,
+	activeWebsite: number,
 } = {
 	websites: [],
+	activeWebsite: 0,
 };
 
 const slice: Slice = createSlice({
 	name: 'websites',
 	initialState: initialState,
-	reducers: {},
+	reducers: {
+		setActiveWebsite(state: any, payload): void {
+			state.activeWebsite = payload;
+		}
+	},
 	extraReducers: {
 		[getWebsites.fulfilled]: (state: typeof initialState, {payload}: { payload: any }): void => {
 			if (payload.status) {
@@ -48,4 +54,5 @@ const slice: Slice = createSlice({
 	},
 });
 
+export const {setActiveWebsite} = slice.actions;
 export default slice.reducer;

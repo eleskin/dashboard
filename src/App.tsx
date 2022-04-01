@@ -42,6 +42,14 @@ const App: JSXElementConstructor<any> = ({
 						</PrivateRoute>
 					}/>
 					
+					<Route path="/home/:website" element={
+						<PrivateRoute isAuth={isAuth}>
+							<Main setIsHovering={setIsHovering}>
+								<Home/>
+							</Main>
+						</PrivateRoute>
+					}/>
+					
 					<Route path="/register" element={
 						<PrivateRoute isAuth={isAuth}>
 							<Main setIsHovering={setIsHovering}>
