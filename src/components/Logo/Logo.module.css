@@ -130,6 +130,10 @@
 	.Logo__label {
 		display: none;
 	}
+	
+	.Logo_hover {
+		padding-left: 16px;
+	}
 }
 
 @media (max-height: 480px) {

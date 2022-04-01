@@ -47,8 +47,8 @@ const Profile: JSXElementConstructor<any> = ({
 
 export default connect(
 	(state: any, props: any): any => ({
-		isActiveProfile: props.isRegistered,
-		setIsActiveProfile: props.isRegistered,
+		isActiveProfile: props.isActiveProfile,
+		setIsActiveProfile: props.setIsActiveProfile,
 		isRegistered: state.userSlice.isRegistered,
 	})
 )(Profile);
