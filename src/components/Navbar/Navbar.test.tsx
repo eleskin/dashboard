@@ -1,8 +1,17 @@
 import {render, screen} from '@testing-library/react';
+import {Provider} from 'react-redux';
+import {BrowserRouter as Router} from 'react-router-dom';
+import store from '../../store';
 import Navbar from './Navbar';
 
 test('Navbar render', () => {
-	render(<Navbar/>);
+	render(
+		<Provider store={store}>
+			<Router>
+				<Navbar/>
+			</Router>
+		</Provider>,
+	);
 	const firstElement = screen.getAllByText(/Clean Admin/i)[0] as HTMLAnchorElement;
 	expect(firstElement).toBeInTheDocument();
 	
