@@ -13,7 +13,9 @@ const Profile: JSXElementConstructor<any> = ({
 	                                             setIsActiveProfile,
 	                                             isRegistered,
                                              }: { isActiveProfile: boolean, setIsActiveProfile: Dispatch<SetStateAction<boolean>>, isRegistered: boolean }): JSX.Element => {
-	const handleButtonClick: MouseEventHandler = (): void => setIsActiveProfile(!isActiveProfile);
+	const handleButtonClick: MouseEventHandler = (): void => {
+		setIsActiveProfile(!isActiveProfile);
+	};
 	
 	return (
 		<div className={`${styles.Profile} ${isActiveProfile ? styles.Profile_active : ''}`}>
@@ -38,7 +40,7 @@ const Profile: JSXElementConstructor<any> = ({
 				</h3>
 				<Headline theme="dark"/>
 				<Progress value={!isRegistered ? 0 : 25}/>
-				<Steps isRegistered={isRegistered}/>
+				<Steps isActiveProfile={isActiveProfile} setIsActiveProfile={setIsActiveProfile} isRegistered={isRegistered}/>
 				<Bonus/>
 			</div>
 		</div>
@@ -50,5 +52,5 @@ export default connect(
 		isActiveProfile: props.isActiveProfile,
 		setIsActiveProfile: props.setIsActiveProfile,
 		isRegistered: state.userSlice.isRegistered,
-	})
+	}),
 )(Profile);

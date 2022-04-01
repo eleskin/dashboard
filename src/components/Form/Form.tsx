@@ -34,7 +34,7 @@ const Select: Function = ({label, options, ...props}: { label: string, options: 
 
 const Header: Function = ({title, subtitle, ...props}: { title: string, subtitle?: string }): JSX.Element => {
 	return (
-		<header {...props} className={styles.FormHeader}>
+		<header {...props} className={styles.Form__header}>
 			<h2>{title}</h2>
 			{subtitle && <span>{subtitle}</span>}
 		</header>

@@ -5,6 +5,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding: 0 16px;
 }
 
 .Start__container {
@@ -12,4 +13,11 @@
 	background-color: #ffffff;
 	border-radius: 8px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 480px) {
+	.Start__container {
+		width: 100%;
+		padding: 16px 16px 12px 16px;
+	}
 }

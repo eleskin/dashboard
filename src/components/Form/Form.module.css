@@ -4,12 +4,12 @@
 	width: 100%;
 }
 
-.FormHeader {
+.Form__header {
 	border-bottom: 1px solid #eeeeee;
 	padding-bottom: 16px;
 }
 
-.FormHeader h2 {
+.Form__header h2 {
 	padding: 0;
 	margin: 0 0 6px 0;
 	font-size: 20px;
@@ -17,7 +17,7 @@
 	color: #334152;
 }
 
-.FormHeader span {
+.Form__header span {
 	color: #999;
 	font-weight: 400;
 	font-size: 14px;
@@ -148,6 +148,26 @@
 	.Form__row {
 		display: grid;
 		grid-template-columns: 1fr;
+		grid-gap: 16px;
+	}
+	
+	.Form__header {
+		padding-bottom: 0;
+	}
+	
+	.Form__footer {
+		padding-top: 0;
+	}
+}
+
+@media (max-width: 480px) {
+	.Form__button {
+		width: 100%;
+	}
+	
+	.Form__footer {
+		flex-direction: column;
+		justify-content: center;
 		grid-gap: 16px;
 	}
 }

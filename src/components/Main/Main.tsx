@@ -24,7 +24,7 @@ const Main: JSXElementConstructor<any> = ({
 	}, [dispatch, websiteURL, websites]);
 	
 	useEffect((): () => void => {
-		const handleResize: EventListener = (event: Event | any): void => {
+		const handleResize: EventListener | Function | any = (event: Event | any): void => {
 			if (event.target.innerWidth <= 720 && isActiveProfile) {
 				setIsActiveProfile(false);
 			}
@@ -33,6 +33,12 @@ const Main: JSXElementConstructor<any> = ({
 		window.addEventListener('resize', handleResize);
 		return (): void => window.removeEventListener('resize', handleResize);
 	}, [isActiveProfile]);
+	
+	useEffect((): void => {
+		if (window.innerWidth <= 720 && isActiveProfile) {
+			setIsActiveProfile(false);
+		}
+	}, []);
 	
 	return (
 		<main className={styles.Main}>
