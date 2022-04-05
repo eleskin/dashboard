@@ -122,6 +122,35 @@
 	color: #ffffff;
 	cursor: pointer;
 	margin: 16px 20px 16px auto;
+	transition: var(--main-transition);
+}
+
+.Accounts__dropdown button:hover {
+	background-color: #1851c2;
+}
+
+.Accounts__input {
+	background-color: #ffffff;
+	padding: 16px;
+}
+
+.Accounts__input span {
+	color: #ffffff;
+}
+
+.Accounts__buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.Accounts__buttons button {
+	margin-left: 0;
+}
+
+.Accounts__buttons button:first-child {
+	background-color: transparent;
 }
 
 @media (max-width: 960px) {

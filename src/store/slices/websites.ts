@@ -24,6 +24,30 @@ export const getWebsites: any = createAsyncThunk(
 	{},
 );
 
+export const addWebsite: any = createAsyncThunk(
+	'websites/add',
+	async ({websiteURL}: {websiteURL: string}): Promise<any> => {
+		try {
+			const response: AxiosResponse = await axios.post('http://localhost/api/websites', {
+				website_url: websiteURL
+			}, {
+				headers: {
+					Authorization: getToken(),
+				},
+			});
+			
+			if (response.status === 200) {
+				return {status: true, websites: response.data.websites};
+			}
+			
+			return undefined;
+		} catch (error: Error | any) {
+			throw new Error(error);
+		}
+	},
+	{},
+);
+
 const initialState: {
 	websites: Array<object>,
 	activeWebsite: number,
@@ -49,6 +73,11 @@ const slice: Slice = createSlice({
 		[getWebsites.rejected]: (state: typeof initialState): void => {
 			if (localStorage.getItem('current_website')) {
 				state.websites = [{url: localStorage.getItem('current_website')}];
+			}
+		},
+		[addWebsite.fulfilled]: (state: typeof initialState, {payload}: { payload: any }): void => {
+			if (payload.status) {
+				state.websites = payload.websites;
 			}
 		},
 	},
